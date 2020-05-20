@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <link href='fullcalendar/packages/core/main.css' rel='stylesheet' />
+        <link href='fullcalendar/packages/daygrid/main.css' rel='stylesheet' />
+        <link href='fullcalendar/packages/timegrid/main.css' rel='stylesheet' />
+        <link href='mine/pop.css' rel='stylesheet' />
+        <script src='fullcalendar/packages/core/main.js'></script>
+        <script src='fullcalendar/packages/list/main.js'></script>
+        <script src='fullcalendar/packages/interaction/main.js'></script>
+        <script src='fullcalendar/packages/daygrid/main.js'></script>
+        <script src='fullcalendar/packages/timegrid/main.js'></script>
+        <script src='jquery/jquery-3.1.1.min.js'></script>
+    </head>
+    <body>
+        <div style="width: 1200px;margin: 10px">
+            <div id='calendar'></div>
+            <div style="width: 180px; float: right">
+                <br><br>
+                <div style = "max-width: 250px;">
+                    类型<input type="text" value=""  id="query_type" /><br><br>
+                    <button id="queryByType" onclick="queryByType()">查询</button> &nbsp
+                    <button id="deleteType" onclick="deleteType()">删除</button> &nbsp
+                    <button id="addType" onclick="addType()">插入</button>
+                </div>
+                <br><br>
+                <div style = "max-width: 250px;">
+                
+                    <div>
+                        开始时间<input type="datetime-local" value=""  id="edit_start" /><br><br>
+                    </div>
+                      
+                    <div>
+                        结束时间<input type="datetime-local" value=""  id="edit_end" /><br><br>
+                    </div>
+                          
+                    <div>
+                        类型<input type="text" value=""  id="edit_type" /><br><br>
+                    </div>
+                          
+                    <div>
+                        <div>
+                            描述<input type="text" value=""  id="edit_description" /><br><br>
+                        </div>
+                          
+                        <button id="updEvent">更新</button> &nbsp&nbsp
+                        <button id="delEvent">删除</button>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="myModal" class="modal">
+
+                <!-- 弹窗,添加事件 -->
+                <div class="modal-content">
+                
+                  <div class="modal-header">
+                    <h2 id="prompt">输入信息</h2>
+                  </div>
+                  
+                  <div class="modal-body">
+                    类型名称&nbsp&nbsp<input type="text" value=""  id="type" /><br><br>
+                    描述&nbsp&nbsp&nbsp&nbsp<input type="text" value=""  id="description" /><br><br>
+                    <input type="button" value="提交" id="addEvent" style="float: right;" /><br>
+                  </div>
+                  
+                  <div class="modal-footer">
+                     <h3>-----</h3>
+                     <span class="close">&times;</span>
+                  </div>
+                </div>
+            </div>
+        <script src='mine/calendar.js'></script>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+
+apply plugin: 'java'
+
+allprojects {
+    task hello {
+        doLast { task ->
+            println "I'm $task.project.name"
+        }
+    }
+    repositories {
+            maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+            maven{ url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
+    }
+}
+
+subprojects {
+    hello {
+        doLast {
+            println "- I a subproject"
+        }
+    }
+}
+
+
+dependencies {
+    //父子项目编译，settings.gradle 加入include（平级includeflat），子项目settings.gradle中加入rootProject.name 
+    //gradle build -x test跳过测试直接编译打包
+    implementation(":usage-detail-sender")
+    implementation(":usage-cost-processor")
+    implementation(":usage-cost-logger")
+    testImplementation("junit:junit")
+}

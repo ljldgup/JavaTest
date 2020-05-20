@@ -1,0 +1,65 @@
+buildscript {
+    ext {
+        //zuul没有支持2.1.x
+        springBootVersion = '2.0.6.RELEASE'
+    }
+    repositories {
+        //判断名字是jialianl在公司, 使用正常的maven库
+        if(  System.getProperty("user.name") == "jialianl" ){
+            println "in company use mavencentral"
+            mavenCentral()
+        }
+        else{
+            println "at home use aliyun"
+            maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+            maven{ url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
+        }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+jar {
+	baseName = 'gateway'
+	version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    jcenter()
+    maven { url 'https://repo.spring.io/release/' }
+    maven { url "https://repo.spring.io/libs-snapshot-local" }
+    maven { url "https://repo.spring.io/libs-milestone-local" }
+    maven { url "https://repo.spring.io/libs-release-local" }
+}
+
+
+
+dependencies {
+	implementation ('org.springframework.boot:spring-boot-starter-web')
+	implementation ('org.springframework.cloud:spring-cloud-starter-netflix-zuul')
+    implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
+    implementation('org.springframework.boot:spring-boot-starter-actuator')
+	testImplementation('org.springframework.boot:spring-boot-starter-test') 
+}
+
+dependencyManagement {
+	imports { 
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:Finchley.SR2"
+	}
+}
+
+
+eclipse {
+	classpath {
+		 containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
+		 containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
+	}
+}
+

@@ -1,0 +1,12 @@
+@charset "UTF-8";
+<style>
+#request {
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:5px;
+    margin:0 auto;
+    display:table-cell;
+    vertical-align:middle;
+}
+</style>

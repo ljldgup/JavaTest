@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	metadata-complete="true" version="4.0">
+	<display-name>Welcome to Tomcat</display-name>
+	<description>&quot;D:/work/tomcat/webapps/ROOT/hello.html&quot;
+	 Welcome to Tomcat
+	</description>
+	
+	<listener>
+        <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
+	</listener>
+	
+	<servlet>
+	        <servlet-name>HelloService</servlet-name>
+	        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+	        <load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+	        <servlet-name>HelloService</servlet-name>
+	        <url-pattern>/Hello</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>HelloWorld</servlet-name>
+		<servlet-class>com.test.HelloWorld</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HelloWorld</servlet-name>
+		<url-pattern>/HelloWorld</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>HelloForm</servlet-name>
+		<servlet-class>com.test.HelloForm</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HelloForm</servlet-name>
+		<url-pattern>/HelloForm</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>CheckBox</servlet-name>
+		<servlet-class>com.test.CheckBox</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CheckBox</servlet-name>
+		<url-pattern>/CheckBox</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ReadParams</servlet-name>
+		<servlet-class>com.test.ReadParams</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ReadParams</servlet-name>
+		<url-pattern>/ReadParams</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>DisplayHeader</servlet-name>
+		<servlet-class>com.test.DisplayHeader</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DisplayHeader</servlet-name>
+		<url-pattern>/DisplayHeader</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Refresh</servlet-name>
+		<servlet-class>com.test.Refresh</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Refresh</servlet-name>
+		<url-pattern>/Refresh</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>showError</servlet-name>
+		<servlet-class>com.test.showError</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>showError</servlet-name>
+		<url-pattern>/showError</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<filter-name>LogFilter</filter-name>
+		<filter-class>com.test.LogFilter</filter-class>
+		<init-param>
+			<param-name>Site</param-name>
+			<param-value>菜鸟教程</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>LogFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+	<servlet>
+		<servlet-name>ErrorHandler</servlet-name>
+		<servlet-class>com.test.ErrorHandler</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ErrorHandler</servlet-name>
+		<url-pattern>/ErrorHandler</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>ReadCookies</servlet-name>
+		<servlet-class>com.test.ReadCookies</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ReadCookies</servlet-name>
+		<url-pattern>/ReadCookies</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>DeleteCookies</servlet-name>
+		<servlet-class>com.test.DeleteCookies</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>DeleteCookies</servlet-name>
+		<url-pattern>/DeleteCookies</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SessionTrack</servlet-name>
+		<servlet-class>com.test.SessionTrack</servlet-class>
+	</servlet>
+
+
+
+	<servlet-mapping>
+		<servlet-name>SessionTrack</servlet-name>
+		<url-pattern>/SessionTrack</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<display-name>UploadServlet</display-name>
+		<servlet-name>UploadServlet</servlet-name>
+		<servlet-class>com.test.UploadServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>UploadServlet</servlet-name>
+		<url-pattern>/UploadServlet</url-pattern>
+	</servlet-mapping>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/ErrorHandler</location>
+	</error-page>
+
+
+	<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/ErrorHandler</location>
+	</error-page>
+
+</web-app>

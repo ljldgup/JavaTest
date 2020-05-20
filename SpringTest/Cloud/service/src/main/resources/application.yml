@@ -1,0 +1,28 @@
+server:
+  port: 8081
+
+spring:
+    jpa:
+        hibernate:
+            ddl-auto: update
+    datasource:
+        url: jdbc:mysql://localhost:3306/db_example?serverTimezone=GMT%2B8
+        username: springuser
+        password: 123456
+    application:
+        name: eureka-client
+    main:
+      allow-bean-definition-overriding: true
+
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka/
+            #defaultZone: http://localhost:8761/eureka/,defaultZone: http://localhost:8762/eureka/
+
+test:
+    name1: jialian
+    operation: kcuf
+    name2: laal
+    times: ${random.int(10)}
+    blockTime: 100

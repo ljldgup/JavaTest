@@ -1,0 +1,3 @@
+/* 多模块构建 */
+/* 父模块名称 */
+rootProject.name = 'usage-cost-logger'

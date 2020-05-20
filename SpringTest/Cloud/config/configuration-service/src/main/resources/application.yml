@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: spring-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/ljldgup/SpringTest  # 远程git仓库的地址
+          #uri: file://D:\work\tmp\SpringTest # 本地仓库
+          #默认搜索根目录可以用,可以设置具体目录，'{application}','{label}'，注意searchPaths结尾s不要漏
+          searchPaths: Cloud\config\properties
+          username: ljldgup
+          #防止强行拉取
+          force-pull: false
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+server:
+  port: 8974

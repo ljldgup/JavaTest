@@ -1,0 +1,5 @@
+/* 多模块构建 */
+/* 父模块名称 */
+rootProject.name = 'spring-cloud-stream'
+/* 引入子模块 */
+include 'usage-detail-sender','usage-cost-processor','usage-cost-logger'

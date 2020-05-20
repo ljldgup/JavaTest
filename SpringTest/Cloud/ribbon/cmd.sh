@@ -1,0 +1,2 @@
+java -jar build/libs/*.jar --server.port=9001 --eureka.client.serviceUrl.defaultZone=http://127.0.0.1:8761/eureka/ &
+java -jar build/libs/*.jar --server.port=9002 --eureka.client.serviceUrl.defaultZone=http://127.0.0.1:8762/eureka/ &
