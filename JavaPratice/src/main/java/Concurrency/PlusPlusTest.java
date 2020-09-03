@@ -21,5 +21,24 @@ public class PlusPlusTest {
         for (int i = 0; i < 2; i++) new Thread(() -> test.plusplus(10000)).start();
         Thread.sleep(1000);
         System.out.println(PlusPlusTest.num);
+
+        /*
+        1) ++i 原理,等价于
+
+　　　　i = i+1;
+　　　　return i;
+        2) i++ 原理,用代码分析表示如下：
+　　　　int temp = i;
+　　　　i = i + 1;
+　　　　return temp;
+
+        c = c++;
+        这里c在自增之后返回了之前的数值，所以c被重置了
+         */
+        int c = 0;
+        for (int i = 0; i < 10; i++) {
+            c = c++;
+        }
+        System.out.println(c);
     }
 }

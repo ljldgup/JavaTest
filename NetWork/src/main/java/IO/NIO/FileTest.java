@@ -13,7 +13,8 @@ public class  FileTest{
 		
 
 		FileTest test = new FileTest("H:\\BaiduNetDisk\\WinKawaks\\skin.bmp");
-		
+
+		//stream是按照字节去处理的，看起来就像是水流一样，一个接一个。而channel是按照数据块来处理的。
 		//channel可以在异步非阻塞变成中使用，在读取数据的过程中会产生相应的时事件，而stream只能在阻塞编程中使用。
 		//stream是按照字节去处理的，看起来就像是水流一样，一个接一个。而channel是按照数据块来处理的,将数据写入的buffer。
 		test.byStream();//InputStream/OutputStream操作byte[]

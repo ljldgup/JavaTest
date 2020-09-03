@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 public class ProcessStream {
- 
+ 	//Reader Writer 对应字符， stream对应字节
 	public static void enter(Process ps) {
 		BufferedWriter in = new BufferedWriter(new OutputStreamWriter(ps.getOutputStream()));
 		//netstat命令本身 会导致阻塞

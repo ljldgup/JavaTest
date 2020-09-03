@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.ArrayList;
 import java.util.HashMap;
 public class Template {
+	// 用泛型来实现类似重载的效果，效率应该低一些
 	public static <k,v> Map<k,v> map(){
 		return new HashMap<k,v>();
 	}

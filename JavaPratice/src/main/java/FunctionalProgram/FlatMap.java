@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//"abc" ->[a,b,c] 扁平化，变成多个元素
 public class FlatMap {
 	public static void main(String[] args) {
         String[] words = new String[]{"Hello","World"};

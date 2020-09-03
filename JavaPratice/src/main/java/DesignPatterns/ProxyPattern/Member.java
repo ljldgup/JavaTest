@@ -36,7 +36,6 @@ public class Member implements People{
 		//myInvocationHandler可以用lambda表达式子替代,但对象要外部传入,效果不好
 		People proxy1 = (People)Proxy.newProxyInstance(handler.getClass().getClassLoader(), member.getClass().getInterfaces(), handler);
 
-
 		proxy1.setAge(15);
 		proxy1.setRate(5);
 	}

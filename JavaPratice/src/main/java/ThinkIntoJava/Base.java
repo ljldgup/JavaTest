@@ -10,12 +10,12 @@ public class Base {
 	
 	@annotationTest1(id = 1313)
 	public void test2() {
-		System.out.println("invoke Base.test1");
+		System.out.println("invoke Base.test2");
 	}
 	
 	@annotationTest1()
 	public void test3() {
-		System.out.println("invoke Base.test1");
+		System.out.println("invoke Base.test3");
 	}
 	
 	public static void main(String[] args) {

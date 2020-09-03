@@ -1,6 +1,7 @@
 package JVMTest;
 
 public class Initialize {
+    //父类静态-子类静态-父类构造代码块-父类构造方法-子类构造代码块-子类构造方法
     public static void main(String[] args) {
         C c1 = new C();
     }

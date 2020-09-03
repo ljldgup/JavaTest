@@ -1,4 +1,6 @@
-目前来看程序中没有明显的绑定kafka的设置，应该是根据依赖进行自动配置的
+代码中没有任何显式绑定kafka的设置，仅在build文件中有kafka相关包，应该是根据依赖进行自动配置的
+
+可以通过docker-compose 启动 zookeeper 和 kafka
 
 bin/windows/zookeeper-server-start.bat  config/zookeeper.properties
 bin/windows/kafka-server-start.bat  config/server.properties

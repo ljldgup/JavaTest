@@ -104,8 +104,8 @@ public class Overflow {
     	Overflow of = new Overflow();
     	//of.heapOOM();
     	//of.stackLeak();
-    	//of.stackLeakByThread();
-    	of.metaSpaceOOM();
+    	of.stackLeakByThread();
+        //of.metaSpaceOOM();
 	}
 
 }

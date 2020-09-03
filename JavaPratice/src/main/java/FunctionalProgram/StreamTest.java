@@ -19,6 +19,7 @@ public class StreamTest {
 		
 		//注意这里要用forEach 遍历，而不是map，map是映射，要有返回值
 		//并且map似乎是惰性求值，单独用不会直接生效，result最后是空的
+		// getOrDefault 在没有的情况下返回默认值
 		testList.stream()
 				.forEach(str -> result1.put(str, result1.getOrDefault(str, 0) + 1));
 		

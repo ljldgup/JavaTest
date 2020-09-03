@@ -17,7 +17,7 @@ public class JDBCTest {
 			// 加载驱动
 			Class.forName("com.mysql.jdbc.Driver");
 			// 获取连接
-			String url = "jdbc:mysql://127.0.0.1:3306/ssmdemo";
+			String url = "jdbc:mysql://127.0.0.1:3306/ssmdemo?serverTimezone=UTC";
 			String user = "springuser";
 			String password = "123456";
 			connection = DriverManager.getConnection(url, user, password);

@@ -25,6 +25,7 @@ public class TestForkJoin {
 		@Override
 		protected Long compute() {
 			long length = end - start;
+			//length 小于一定的阈值就直接计算，否则递归调用自己
 			if (length <= THRESHOLD) {
 				long sum = 0;
 				for (long i = start; i <= end; i++) {

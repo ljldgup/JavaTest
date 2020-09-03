@@ -10,6 +10,9 @@ repositories {
     }
 }
 
+tasks.withType(JavaCompile) {
+    options.encoding = "GBK"
+}
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8

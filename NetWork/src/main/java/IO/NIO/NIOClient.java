@@ -38,7 +38,7 @@ public class NIOClient
     public static void main(String[] args) throws IOException
     {
         NIOClient client = new NIOClient();
-        client.initClient("localhost", 8010);
+        client.initClient("localhost", 8080);
         client.sendAndRecv("I am a client");
     }
 }

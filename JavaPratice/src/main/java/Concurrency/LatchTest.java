@@ -28,6 +28,7 @@ public class LatchTest {
 	    }
 	}
     public static void main(String[] args) {
+		//CountDownLatch 值降为1时执行
         CountDownLatch begin = new CountDownLatch(1);
         CountDownLatch end = new CountDownLatch(2);
 

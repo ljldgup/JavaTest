@@ -57,7 +57,8 @@ public class Application {
 	public static void main(String[] args) throws InterruptedException {
 
 		ApplicationContext ctx = SpringApplication.run(Application.class, args);
-
+        
+        //获得对应类实例的方法
 		StringRedisTemplate template = ctx.getBean(StringRedisTemplate.class);
 		CountDownLatch latch = ctx.getBean(CountDownLatch.class);
 
