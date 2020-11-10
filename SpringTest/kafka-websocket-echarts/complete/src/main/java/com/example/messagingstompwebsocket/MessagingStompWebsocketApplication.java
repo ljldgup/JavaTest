@@ -22,8 +22,10 @@ public class MessagingStompWebsocketApplication {
     public static void main(String[] args) {
         SpringApplication.run(MessagingStompWebsocketApplication.class, args);
     }
-
-    @KafkaListener(id = "dltGroup", topics = "test")
+    
+    //这里无法启动多个spring应用，因为同一个id只能消费以此
+    // 通过${}读取配置，注解里貌似不需要value
+    @KafkaListener(id = "${kafka.id:ljl}", topics = "${kafka.topic:test}")
     public void kListen(String in) {
         log.info(in);
         messagingTemplate.convertAndSend("/topic/greetings", new Greeting(in));
