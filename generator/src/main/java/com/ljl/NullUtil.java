@@ -1,16 +1,12 @@
 package com.ljl;
 
 import cn.hutool.core.util.ObjectUtil;
-import cn.hutool.core.util.ReflectUtil;
-import com.srcb.branch.bhboot.core.startup.BHApplicationBuilder;
-import com.srcb.branch.bhboot.mock.Application;
-import com.srcb.branch.bhboot.mock.controller.entity.response.WalletQueryInfoResponseBizContent;
-import com.srcb.branch.bhboot.mock.controller.entity.response.WalletTransferResponseBizContent;
+
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.List;
-import java.util.Map;
+
 
 public class NullUtil {
     static public Object replaceNull(Class cls, Object object) {
