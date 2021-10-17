@@ -10,9 +10,9 @@ kafka-topics.bat --list --zookeeper localhost:2181
 bin/windows/kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic usage-detail
 bin/windows/kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic usage-cost
 
-java -jar usage-detail-sender/target/*.jar --server.port=9001
-java -jar usage-detail-sender/target/*.jar --server.port=9002
-java -jar usage-cost-logger/target/*.jar --server.port=9003
+java -Xmx256m -Xmn80m -jar usage-detail-sender/target/*.jar --server.port=9001
+java -Xmx256m -Xmn80m -jar usage-detail-sender/target/*.jar --server.port=9002
+java -Xmx256m -Xmn80m -jar usage-cost-logger/target/*.jar --server.port=9003
 
 
 kafka-console-producer.bat --broker-list localhost:9092 --topic output < echo message
