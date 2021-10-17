@@ -31,18 +31,18 @@ public class RpcClientProxy<T> implements InvocationHandler {
         ObjectInputStream input = null;
 
         try {
-            // 2.´´½¨Socket¿Í»§¶Ë£¬¸ù¾İÖ¸¶¨µØÖ·Á¬½ÓÔ¶³Ì·şÎñÌá¹©Õß
+            // 2.åˆ›å»ºSocketå®¢æˆ·ç«¯ï¼Œæ ¹æ®æŒ‡å®šåœ°å€è¿æ¥è¿œç¨‹æœåŠ¡æä¾›è€…
             socket = new Socket();
             socket.connect(addr);
 
-            // 3.½«Ô¶³Ì·şÎñµ÷ÓÃËùĞèµÄ½Ó¿ÚÀà¡¢·½·¨Ãû¡¢²ÎÊıÁĞ±íµÈ±àÂëºó·¢ËÍ¸ø·şÎñÌá¹©Õß
+            // 3.å°†è¿œç¨‹æœåŠ¡è°ƒç”¨æ‰€éœ€çš„æ¥å£ç±»ã€æ–¹æ³•åã€å‚æ•°åˆ—è¡¨ç­‰ç¼–ç åå‘é€ç»™æœåŠ¡æä¾›è€…
             output = new ObjectOutputStream(socket.getOutputStream());
             output.writeUTF(serviceInterface.getName());
             output.writeUTF(method.getName());
             output.writeObject(method.getParameterTypes());
             output.writeObject(args);
 
-            // 4.Í¬²½×èÈûµÈ´ı·şÎñÆ÷·µ»ØÓ¦´ğ£¬»ñÈ¡Ó¦´ğºó·µ»Ø
+            // 4.åŒæ­¥é˜»å¡ç­‰å¾…æœåŠ¡å™¨è¿”å›åº”ç­”ï¼Œè·å–åº”ç­”åè¿”å›
             input = new ObjectInputStream(socket.getInputStream());
             return input.readObject();
         } finally {
@@ -53,7 +53,7 @@ public class RpcClientProxy<T> implements InvocationHandler {
     }
 
     public static void main(String[] args) {
-    	//Class<T> serviceInterface ÊäÈëµÄ¾ÍÊÇÀà£¬´Ë´¦·ºĞÍ¾ÍÊÇÀàĞÍ²ÎÊı
+    	//Class<T> serviceInterface è¾“å…¥çš„å°±æ˜¯ç±»ï¼Œæ­¤å¤„æ³›å‹å°±æ˜¯ç±»å‹å‚æ•°
         RpcClientProxy client = new RpcClientProxy<>(IHello.class,"localhost","6666");
         IHello hello = (IHello) client.getClientIntance ();
         System.out.println (hello.sayHello ( "socket rpc" ));

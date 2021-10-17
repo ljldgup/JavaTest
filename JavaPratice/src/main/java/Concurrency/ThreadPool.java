@@ -28,7 +28,7 @@ public class ThreadPool {
 		Future<Object> future2 = executorService.submit(new Callable<Object>() {
 	        @Override
 	        public Object call() throws Exception {
-	            throw new RuntimeException("exception in call~");// ¸ÃÒì³£»áÔÚµ÷ÓÃFuture.get()Ê±´«µİ¸øµ÷ÓÃÕß
+	            throw new RuntimeException("exception in call~");// è¯¥å¼‚å¸¸ä¼šåœ¨è°ƒç”¨Future.get()æ—¶ä¼ é€’ç»™è°ƒç”¨è€…
 	        }
 	    });
 		    
@@ -47,9 +47,9 @@ public class ThreadPool {
 	
 	private void executorsTest() {
 		// TODO Auto-generated method stub
-		//newSingleThreadExecutor Ê¹ÓÃµÄÊÇÍ¬Ò»¸öthread id
-		//newFixedThreadPool Ê¹ÓÃµÄÒ²ÊÇÍ¬Ò»¸ö·¶Î§ÄÚµÄ
-		//Ïß³Ì³ØÓ¦¸ÃÊÇµÈÔ­À´µÄÏß³Ì½áÊøºó£¬ÓÃÍ¬ÑùµÄid½¨Á¢ÁËĞÂµÄ½ø³Ì£¬Ã»ÓĞÀË·Ñ×ÊÔ´
+		//newSingleThreadExecutor ä½¿ç”¨çš„æ˜¯åŒä¸€ä¸ªthread id
+		//newFixedThreadPool ä½¿ç”¨çš„ä¹Ÿæ˜¯åŒä¸€ä¸ªèŒƒå›´å†…çš„
+		//çº¿ç¨‹æ± åº”è¯¥æ˜¯ç­‰åŸæ¥çš„çº¿ç¨‹ç»“æŸåï¼Œç”¨åŒæ ·çš„idå»ºç«‹äº†æ–°çš„è¿›ç¨‹ï¼Œæ²¡æœ‰æµªè´¹èµ„æº
 		int i = 0;
 		ExecutorService singleES = Executors.newSingleThreadExecutor();
 		while(i++ < 5) {
@@ -80,12 +80,12 @@ public class ThreadPool {
 		// TODO Auto-generated method stub
 		int i = 0;
 
-		//DiscardOledestPolicy²ßÂÔ£º¸Ã²ßÂÔ»á¶ªÆúÈÎÎñ¶ÓÁĞÖĞ×îÀÏµÄÒ»¸öÈÎÎñ£¬Ò²¾ÍÊÇµ±Ç°ÈÎÎñ¶ÓÁĞÖĞ×îÏÈ±»Ìí¼Ó½øÈ¥µÄ£¬ÂíÉÏÒª±»Ö´ĞĞµÄÄÇ¸öÈÎÎñ£¬²¢³¢ÊÔÔÙ´ÎÌá½»
-		//ArrayBlockingQueueÓĞ½çÈÎÎñ¶ÓÁĞ,´´½¨µÄÏß³ÌÊıÁ¿´ïµ½corePoolSizeÊ±£¬Ôò»á½«ĞÂµÄÈÎÎñ¼ÓÈëµ½µÈ´ı¶ÓÁĞÖĞ¡£ÈôµÈ´ı¶ÓÁĞÒÑÂú£¬¼´³¬¹ıArrayBlockingQueue³õÊ¼»¯µÄÈİÁ¿
-		//¼ÌĞø´´½¨Ïß³Ì£¬Ö±µ½Ïß³ÌÊıÁ¿´ïµ½maximumPoolSizeÉèÖÃµÄ×î´óÏß³ÌÊıÁ¿£¬Èô´óÓÚmaximumPoolSize£¬ÔòÖ´ĞĞ¾Ü¾ø²ßÂÔ¡£
+		//DiscardOledestPolicyç­–ç•¥ï¼šè¯¥ç­–ç•¥ä¼šä¸¢å¼ƒä»»åŠ¡é˜Ÿåˆ—ä¸­æœ€è€çš„ä¸€ä¸ªä»»åŠ¡ï¼Œä¹Ÿå°±æ˜¯å½“å‰ä»»åŠ¡é˜Ÿåˆ—ä¸­æœ€å…ˆè¢«æ·»åŠ è¿›å»çš„ï¼Œé©¬ä¸Šè¦è¢«æ‰§è¡Œçš„é‚£ä¸ªä»»åŠ¡ï¼Œå¹¶å°è¯•å†æ¬¡æäº¤
+		//ArrayBlockingQueueæœ‰ç•Œä»»åŠ¡é˜Ÿåˆ—,åˆ›å»ºçš„çº¿ç¨‹æ•°é‡è¾¾åˆ°corePoolSizeæ—¶ï¼Œåˆ™ä¼šå°†æ–°çš„ä»»åŠ¡åŠ å…¥åˆ°ç­‰å¾…é˜Ÿåˆ—ä¸­ã€‚è‹¥ç­‰å¾…é˜Ÿåˆ—å·²æ»¡ï¼Œå³è¶…è¿‡ArrayBlockingQueueåˆå§‹åŒ–çš„å®¹é‡
+		//ç»§ç»­åˆ›å»ºçº¿ç¨‹ï¼Œç›´åˆ°çº¿ç¨‹æ•°é‡è¾¾åˆ°maximumPoolSizeè®¾ç½®çš„æœ€å¤§çº¿ç¨‹æ•°é‡ï¼Œè‹¥å¤§äºmaximumPoolSizeï¼Œåˆ™æ‰§è¡Œæ‹’ç»ç­–ç•¥ã€‚
 		ExecutorService discardPolicyES = new ThreadPoolExecutor(2, 3, 
                 0, TimeUnit.SECONDS, 
-                new ArrayBlockingQueue<>(3), // Ê¹ÓÃÓĞ½ç¶ÓÁĞ£¬±ÜÃâOOM
+                new ArrayBlockingQueue<>(3), // ä½¿ç”¨æœ‰ç•Œé˜Ÿåˆ—ï¼Œé¿å…OOM
                 new ThreadPoolExecutor.DiscardPolicy());
 		
 		i = 0;
@@ -96,7 +96,7 @@ public class ThreadPool {
 		}
 		discardPolicyES.shutdown();
 		
-		//ÎŞ½ç¶ÓÁĞLinkedBlockingQueue ÏÂ maximumPoolSize£¨2£©²»ÔÙÓĞĞ§£¬¾Ü¾ø²ßÂÔÒ²ÎŞĞ§
+		//æ— ç•Œé˜Ÿåˆ—LinkedBlockingQueue ä¸‹ maximumPoolSizeï¼ˆ2ï¼‰ä¸å†æœ‰æ•ˆï¼Œæ‹’ç»ç­–ç•¥ä¹Ÿæ— æ•ˆ
 		ExecutorService discardOldestPolicyES = new ThreadPoolExecutor(2, 3, 
                 0, TimeUnit.SECONDS, 
                 new LinkedBlockingQueue<Runnable>(), 
@@ -110,9 +110,9 @@ public class ThreadPool {
 		discardOldestPolicyES.shutdown();
 		
 		
-		//AbortPolicy²ßÂÔ£º¸Ã²ßÂÔ»áÖ±½ÓÅ×³öÒì³££¬×èÖ¹ÏµÍ³Õı³£¹¤×÷£»
-		//Ö±½ÓÌá½»¶ÓÁĞ£ºSynchronousQueueÊÇÒ»¸öÌØÊâµÄBlockingQueue£¬ËüÃ»ÓĞÈİÁ¿
-		//Ö´ĞĞÒ»¸ö²åÈë²Ù×÷¾Í»á×èÈû£¬ĞèÒªÔÙÖ´ĞĞÒ»¸öÉ¾³ı²Ù×÷²Å»á±»»½ĞÑ£¬·´Ö®Ã¿Ò»¸öÉ¾³ı²Ù×÷Ò²¶¼ÒªµÈ´ı¶ÔÓ¦µÄ²åÈë²Ù×÷¡£
+		//AbortPolicyç­–ç•¥ï¼šè¯¥ç­–ç•¥ä¼šç›´æ¥æŠ›å‡ºå¼‚å¸¸ï¼Œé˜»æ­¢ç³»ç»Ÿæ­£å¸¸å·¥ä½œï¼›
+		//ç›´æ¥æäº¤é˜Ÿåˆ—ï¼šSynchronousQueueæ˜¯ä¸€ä¸ªç‰¹æ®Šçš„BlockingQueueï¼Œå®ƒæ²¡æœ‰å®¹é‡
+		//æ‰§è¡Œä¸€ä¸ªæ’å…¥æ“ä½œå°±ä¼šé˜»å¡ï¼Œéœ€è¦å†æ‰§è¡Œä¸€ä¸ªåˆ é™¤æ“ä½œæ‰ä¼šè¢«å”¤é†’ï¼Œåä¹‹æ¯ä¸€ä¸ªåˆ é™¤æ“ä½œä¹Ÿéƒ½è¦ç­‰å¾…å¯¹åº”çš„æ’å…¥æ“ä½œã€‚
 		ExecutorService abortPolicyES = new ThreadPoolExecutor(1, 2, 
                 0, TimeUnit.SECONDS, 
                 new SynchronousQueue<Runnable>(), 

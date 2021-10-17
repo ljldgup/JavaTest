@@ -21,12 +21,12 @@ public class UserDaoTest {
     public void setUp() throws Exception {
         // mybatis-config.xml
         String resource = "mybatis-config.xml";
-        // ¶ÁÈ¡ÅäÖÃÎÄ¼ş
+        // è¯»å–é…ç½®æ–‡ä»¶
         InputStream is = Resources.getResourceAsStream(resource);
-        // ¹¹½¨SqlSessionFactory
+        // æ„å»ºSqlSessionFactory
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
 
-        // »ñÈ¡sqlSession
+        // è·å–sqlSession
         sqlSession = sqlSessionFactory.openSession();
 
         //this.userDao = new UserDaoImpl(sqlSession);
@@ -35,20 +35,20 @@ public class UserDaoTest {
     }
 
 
-    // ÔËĞĞ²âÊÔÊ±£¬No tests found for given includes:£¬ setting-buildtools-gradle-test with ¸Ä³Éidea
+    // è¿è¡Œæµ‹è¯•æ—¶ï¼ŒNo tests found for given includes:ï¼Œ setting-buildtools-gradle-test with æ”¹æˆidea
 
     /**
-     * Ò»¼¶»º´æÂú×ãÌõ¼ş£º
-     * 1¡¢Í¬Ò»¸ösessionÖĞ
-     * 2¡¢ÏàÍ¬µÄSQLºÍ²ÎÊı
-     * Ò»¼¶»º´æ(SqlSession¼¶±ğ) Ö´ĞĞÁ½´ÎÏàÍ¬µÄsql²éÑ¯Óï¾äÊ±£¬µÚÒ»´Î»ØÈ¥Êı¾İ¿âÖĞ²éÑ¯Êı¾İ²¢Ğ´µ½»º´æÖĞ
-     * ¶ş¼¶»º´æ(mapper¼¶±ğ) ¶ş¼¶»º´æµÄ×÷ÓÃÓòÊÇmapperµÄÍ¬Ò»¸önamespace£¬µ±²»Í¬µÄSqlSessionÖ´ĞĞÏàÍ¬µÄnamespaceÏÂµÄsqlÓï¾ä£¬²¢ÏòsqlÓï¾äÖĞ´«µİµÄ²ÎÊıÒ²ÏàÍ¬Ê±Êı¾İ¿âÖĞ²éÑ¯Êı¾İ²¢Ğ´µ½»º´æÖĞ
-     *  µ±SqlSessionÖ´ĞĞ¹ıDML²Ù×÷£¨insert£¬update£¬delete£©²¢Ìá½»µ½Êı¾İ¿âºó£¬Mybatis»áÇå¿ÕÒ»¼¶»º´æ¡£
+     * ä¸€çº§ç¼“å­˜æ»¡è¶³æ¡ä»¶ï¼š
+     * 1ã€åŒä¸€ä¸ªsessionä¸­
+     * 2ã€ç›¸åŒçš„SQLå’Œå‚æ•°
+     * ä¸€çº§ç¼“å­˜(SqlSessionçº§åˆ«) æ‰§è¡Œä¸¤æ¬¡ç›¸åŒçš„sqlæŸ¥è¯¢è¯­å¥æ—¶ï¼Œç¬¬ä¸€æ¬¡å›å»æ•°æ®åº“ä¸­æŸ¥è¯¢æ•°æ®å¹¶å†™åˆ°ç¼“å­˜ä¸­
+     * äºŒçº§ç¼“å­˜(mapperçº§åˆ«) äºŒçº§ç¼“å­˜çš„ä½œç”¨åŸŸæ˜¯mapperçš„åŒä¸€ä¸ªnamespaceï¼Œå½“ä¸åŒçš„SqlSessionæ‰§è¡Œç›¸åŒçš„namespaceä¸‹çš„sqlè¯­å¥ï¼Œå¹¶å‘sqlè¯­å¥ä¸­ä¼ é€’çš„å‚æ•°ä¹Ÿç›¸åŒæ—¶æ•°æ®åº“ä¸­æŸ¥è¯¢æ•°æ®å¹¶å†™åˆ°ç¼“å­˜ä¸­
+     *  å½“SqlSessionæ‰§è¡Œè¿‡DMLæ“ä½œï¼ˆinsertï¼Œupdateï¼Œdeleteï¼‰å¹¶æäº¤åˆ°æ•°æ®åº“åï¼ŒMybatisä¼šæ¸…ç©ºä¸€çº§ç¼“å­˜ã€‚
      */
     @Test
     public void queryUserById() throws Exception {
         System.out.println(this.userDao.queryUserById("1"));
-        //Çå¿Õ»º´æ
+        //æ¸…ç©ºç¼“å­˜
         //sqlSession.clearCache();
         System.out.println(this.userDao.queryUserById("1"));
     }
@@ -66,7 +66,7 @@ public class UserDaoTest {
         User user = new User();
         user.setAge(16);
         user.setBirthday(new Date("1990/09/02"));
-        user.setName("´óÅô");
+        user.setName("å¤§é¹");
         user.setPassword("123456");
         user.setSex(1);
         user.setUserName("evan");
@@ -78,7 +78,7 @@ public class UserDaoTest {
     public void updateUser() throws Exception {
         User user = new User();
         user.setBirthday(new Date());
-        user.setName("¾²Åô");
+        user.setName("é™é¹");
         user.setPassword("654321");
         user.setSex(1);
         user.setUserName("evanjin");

@@ -10,27 +10,27 @@ public class typeErasure {
         arrayList1.add("abc");  
         ArrayList<Integer> arrayList2=new ArrayList<Integer>();  
         arrayList2.add(123);  
-        //String ºÍ IntegerĞÅÏ¢±»²Á³ı
+        //String å’Œ Integerä¿¡æ¯è¢«æ“¦é™¤
         System.out.println(arrayList1.getClass()==arrayList2.getClass());  
         
         System.out.println("--------------------------------------------");
         
         ArrayList<Integer> arrayList3=new ArrayList<Integer>();  
-        arrayList3.add(1);//ÕâÑùµ÷ÓÃadd·½·¨Ö»ÄÜ´æ´¢ÕûĞÎ£¬ÒòÎª·ºĞÍÀàĞÍµÄÊµÀıÎªInteger
-        //ÀûÓÃ·´Éäµ÷ÓÃadd·½·¨µÄÊ±ºò£¬È´¿ÉÒÔ´æ´¢×Ö·û´®¡£
-        //ËµÃ÷ÁËInteger·ºĞÍÊµÀıÔÚ±àÒëÖ®ºó±»²Á³ıÁË£¬Ö»±£ÁôÁËÔ­Ê¼ÀàĞÍObject¡£
+        arrayList3.add(1);//è¿™æ ·è°ƒç”¨addæ–¹æ³•åªèƒ½å­˜å‚¨æ•´å½¢ï¼Œå› ä¸ºæ³›å‹ç±»å‹çš„å®ä¾‹ä¸ºInteger
+        //åˆ©ç”¨åå°„è°ƒç”¨addæ–¹æ³•çš„æ—¶å€™ï¼Œå´å¯ä»¥å­˜å‚¨å­—ç¬¦ä¸²ã€‚
+        //è¯´æ˜äº†Integeræ³›å‹å®ä¾‹åœ¨ç¼–è¯‘ä¹‹åè¢«æ“¦é™¤äº†ï¼Œåªä¿ç•™äº†åŸå§‹ç±»å‹Objectã€‚
         arrayList3.getClass().getMethod("add", Object.class).invoke(arrayList3, "asd");  
         for (int i=0;i<arrayList3.size();i++) {  
             System.out.println(arrayList3.get(i));  
         }  
         
-        //Èç¹ûÀàĞÍ±äÁ¿ÓĞÏŞ¶¨£¬ÄÇÃ´Ô­Ê¼ÀàĞÍ¾ÍÓÃµÚÒ»¸ö±ß½çµÄÀàĞÍ±äÁ¿À´Ìæ»»¡£
-        //public class Pair<T extends Serializable&Comparable> £¬ÄÇÃ´Ô­Ê¼ÀàĞÍ¾ÍÓÃSerializableÌæ»»
+        //å¦‚æœç±»å‹å˜é‡æœ‰é™å®šï¼Œé‚£ä¹ˆåŸå§‹ç±»å‹å°±ç”¨ç¬¬ä¸€ä¸ªè¾¹ç•Œçš„ç±»å‹å˜é‡æ¥æ›¿æ¢ã€‚
+        //public class Pair<T extends Serializable&Comparable> ï¼Œé‚£ä¹ˆåŸå§‹ç±»å‹å°±ç”¨Serializableæ›¿æ¢
         
         System.out.println("--------------------------------------------");
-        //Ö¸¶¨·ºĞÍµÄÊ±ºò£¬Ò²²î²»¶à£¬Ö»²»¹ıÕâ¸öÊ±ºòµÄ·ºĞÍÀàĞÍÎªObject
-        //±ÈÈçArrayListÖĞ£¬Èç¹û²»Ö¸¶¨·ºĞÍ£¬ÄÇÃ´Õâ¸öArrayListÖĞ¿ÉÒÔ·ÅÈÎÒâÀàĞÍµÄ¶ÔÏó¡£
-        //×¢Òâ¼°Ê±Ç¿ÖÆ×ªĞÍºó£¬ÈÔÈ»¿ÉÒÔµÃµ½ÊÇString£¬ËùÒÔ·ÅÈë·ºĞÍÈİÆ÷ºó£¬²»»á¶ªÊ§ĞÅÏ¢
+        //æŒ‡å®šæ³›å‹çš„æ—¶å€™ï¼Œä¹Ÿå·®ä¸å¤šï¼Œåªä¸è¿‡è¿™ä¸ªæ—¶å€™çš„æ³›å‹ç±»å‹ä¸ºObject
+        //æ¯”å¦‚ArrayListä¸­ï¼Œå¦‚æœä¸æŒ‡å®šæ³›å‹ï¼Œé‚£ä¹ˆè¿™ä¸ªArrayListä¸­å¯ä»¥æ”¾ä»»æ„ç±»å‹çš„å¯¹è±¡ã€‚
+        //æ³¨æ„åŠæ—¶å¼ºåˆ¶è½¬å‹åï¼Œä»ç„¶å¯ä»¥å¾—åˆ°æ˜¯Stringï¼Œæ‰€ä»¥æ”¾å…¥æ³›å‹å®¹å™¨åï¼Œä¸ä¼šä¸¢å¤±ä¿¡æ¯
         Object o = new String("sdf");
         System.out.println("Object o = new String(\"sdf\"); o type " + o.getClass().getName());
 	}

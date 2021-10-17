@@ -10,7 +10,7 @@ public class myInvocationHandler implements InvocationHandler {
         this.obj = obj;
     }
 
-    //具体代理动作
+    //鍏蜂綋浠ｇ悊鍔ㄤ綔
     @Override
     public Object invoke(Object proxy, Method method, Object[] arg2) throws Throwable {
         // TODO Auto-generated method stub

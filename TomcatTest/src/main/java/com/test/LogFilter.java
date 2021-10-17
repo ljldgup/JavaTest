@@ -3,24 +3,24 @@ package com.test;
 import javax.servlet.*;
 import java.util.*;
 
-//ÊµÏÖ Filter Àà
+//å®ç° Filter ç±»
 public class LogFilter implements Filter  {
     public void  init(FilterConfig config) throws ServletException {
-        // »ñÈ¡³õÊ¼»¯²ÎÊı
+        // è·å–åˆå§‹åŒ–å‚æ•°
         String site = config.getInitParameter("Site"); 
 
-        // Êä³ö³õÊ¼»¯²ÎÊı
+        // è¾“å‡ºåˆå§‹åŒ–å‚æ•°
         System.out.println("test: " + site); 
     }
     public void  doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws java.io.IOException, ServletException {
 
-        // Êä³öÕ¾µãÃû³Æ
+        // è¾“å‡ºç«™ç‚¹åç§°
         System.out.println("alfucklaaaaaa");
 
-        // °ÑÇëÇó´«»Ø¹ıÂËÁ´
+        // æŠŠè¯·æ±‚ä¼ å›è¿‡æ»¤é“¾
         chain.doFilter(request,response);
     }
     public void destroy( ){
-        /* ÔÚ Filter ÊµÀı±» Web ÈİÆ÷´Ó·şÎñÒÆ³ıÖ®Ç°µ÷ÓÃ */
+        /* åœ¨ Filter å®ä¾‹è¢« Web å®¹å™¨ä»æœåŠ¡ç§»é™¤ä¹‹å‰è°ƒç”¨ */
     }
 }

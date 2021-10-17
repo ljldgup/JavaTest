@@ -8,7 +8,7 @@ import org.apache.thrift.transport.TTransport;
 import ThriftTest.service.server.HelloWorld;
 
 /**
- * ¿Í»§¶Ë
+ * å®¢æˆ·ç«¯
  *
  * @author tang
  */
@@ -18,13 +18,13 @@ public class HelloWorldClient {
         System.out.println("client started....");
         TTransport transport = null;
         try {
-            // ÉèÖÃµ÷ÓÃµÄ·şÎñµØÖ·Îª±¾µØ£¬¶Ë¿ÚÎª8080,³¬Ê±ÉèÖÃÎª30Ãë
+            // è®¾ç½®è°ƒç”¨çš„æœåŠ¡åœ°å€ä¸ºæœ¬åœ°ï¼Œç«¯å£ä¸º8080,è¶…æ—¶è®¾ç½®ä¸º30ç§’
             transport = new TSocket("localhost", 8080, 30000);
-            // Ğ­ÒéÒªºÍ·şÎñ¶ËÒ»ÖÂ
+            // åè®®è¦å’ŒæœåŠ¡ç«¯ä¸€è‡´
             TProtocol protocol = new TBinaryProtocol(transport);
             HelloWorld.Client client = new HelloWorld.Client(protocol);
             transport.open();
-            // µ÷ÓÃ½Ó¿Ú·½·¨
+            // è°ƒç”¨æ¥å£æ–¹æ³•
             String result = client.sendString("Hello World!");
             System.out.println(result);
         } catch (Exception e) {

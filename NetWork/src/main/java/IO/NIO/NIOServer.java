@@ -13,27 +13,27 @@ import java.util.Iterator;
 public class NIOServer
 {
     /**
-     * Ñ¡ÔñÆ÷
+     * é€‰æ‹©å™¨
      */
     private Selector selector;
  
     /**
-     * Í¨µÀ
+     * é€šé“
      */
     ServerSocketChannel serverSocketChannel;
  
     public void initServer(int port) throws IOException
     {
-        //´ò¿ªÒ»¸öÍ¨µÀ
+        //æ‰“å¼€ä¸€ä¸ªé€šé“
         serverSocketChannel = ServerSocketChannel.open();
  
-        //Í¨µÀÉèÖÃ·Ç×èÈû
+        //é€šé“è®¾ç½®éé˜»å¡
         serverSocketChannel.configureBlocking(false);
  
-        //°ó¶¨¶Ë¿ÚºÅ
+        //ç»‘å®šç«¯å£å·
         serverSocketChannel.socket().bind(new InetSocketAddress("localhost", port));
  
-        //×¢²á
+        //æ³¨å†Œ
         this.selector = Selector.open();
         serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
     }
@@ -59,7 +59,7 @@ public class NIOServer
                 {
                     recvAndReply(key);
                 }
-                //²ÉÓÃµü´ú±éÀúÊ±µÄÉ¾³ı·½·¨
+                //é‡‡ç”¨è¿­ä»£éå†æ—¶çš„åˆ é™¤æ–¹æ³•
                 ite.remove();
             }
         }

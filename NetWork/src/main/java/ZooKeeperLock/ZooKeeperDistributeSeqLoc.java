@@ -25,18 +25,18 @@ import org.apache.zookeeper.data.Stat;
 
 public class ZooKeeperDistributeSeqLoc implements Lock, Watcher {
 
-	// ³¬Ê±Ê±¼ä
+	// è¶…æ—¶æ—¶é—´
 	private static final int SESSION_TIMEOUT = 5000;
-	// zookeeper serverÁĞ±í
+	// zookeeper serveråˆ—è¡¨
 	private String hosts;
 	private String groupNode = "locks";
 	private String subNode = "sub";
 
 	private String lockName;
 	private ZooKeeper zk;
-	// µ±Ç°client´´½¨µÄ×Ó½Úµã
+	// å½“å‰clientåˆ›å»ºçš„å­èŠ‚ç‚¹
 	private String thisPath;
-	// µ±Ç°clientµÈ´ıµÄ×Ó½Úµã
+	// å½“å‰clientç­‰å¾…çš„å­èŠ‚ç‚¹
 	private String waitPath;
 	private List<Exception> exceptionList = new ArrayList<>();
 	private CountDownLatch latch = new CountDownLatch(1);
@@ -45,21 +45,21 @@ public class ZooKeeperDistributeSeqLoc implements Lock, Watcher {
 		this.hosts = hosts;
 		this.lockName = lockName;
 		try {
-			// Á¬½Ózookeeper
+			// è¿æ¥zookeeper
 			zk = new ZooKeeper(hosts, SESSION_TIMEOUT, this);
 			Stat stat = zk.exists("/" + groupNode, false);
 			if (stat == null) {
-				// Èç¹û¸ù½Úµã²»´æÔÚ£¬Ôò´´½¨¸ù½Úµã
+				// å¦‚æœæ ¹èŠ‚ç‚¹ä¸å­˜åœ¨ï¼Œåˆ™åˆ›å»ºæ ¹èŠ‚ç‚¹
 				zk.create("/" +groupNode, new byte[0], ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
 			}
 		} catch (IOException e) {
-			System.out.println("ZkÁ¬½ÓÒì³£" + e);
+			System.out.println("Zkè¿æ¥å¼‚å¸¸" + e);
 			exceptionList.add(e);
 		} catch (InterruptedException e) {
-			System.out.println("ZkÁ¬½ÓÒì³£ " + e);
+			System.out.println("Zkè¿æ¥å¼‚å¸¸ " + e);
 			exceptionList.add(e);
 		} catch (KeeperException e) {
-			System.out.println("ZkÁ¬½ÓÒì³£" + e);
+			System.out.println("Zkè¿æ¥å¼‚å¸¸" + e);
 			exceptionList.add(e);
 		}
 	}
@@ -71,10 +71,10 @@ public class ZooKeeperDistributeSeqLoc implements Lock, Watcher {
 		}
 		try {
 			if (this.tryLock()) {
-				System.out.println("------------>Ïß³Ì£º{},Ëø£º{}£¬»ñµÃ" + Thread.currentThread().getName() + lockName);
+				System.out.println("------------>çº¿ç¨‹ï¼š{},é”ï¼š{}ï¼Œè·å¾—" + Thread.currentThread().getName() + lockName);
 				return;
 			} else {
-				// µÈ´ıËø
+				// ç­‰å¾…é”
 				this.latch.await();
 			}
 		} catch (InterruptedException e) {
@@ -92,16 +92,16 @@ public class ZooKeeperDistributeSeqLoc implements Lock, Watcher {
 		try {
 			String splitStr = "_lock_";
 			if (lockName.contains(splitStr)) {
-				throw new ZooKeeperDistributeSeqLoc.LockException("ËøÃûÓĞÎó");
+				throw new ZooKeeperDistributeSeqLoc.LockException("é”åæœ‰è¯¯");
 			}
-			// ´´½¨×Ó½Úµã
+			// åˆ›å»ºå­èŠ‚ç‚¹
 			thisPath = zk.create("/" + groupNode + "/" + lockName + subNode + splitStr, null, Ids.OPEN_ACL_UNSAFE,
 					CreateMode.EPHEMERAL_SEQUENTIAL);
 
-			// ×¢Òâ, Ã»ÓĞ±ØÒª¼àÌı"/locks"µÄ×Ó½ÚµãµÄ±ä»¯Çé¿ö
+			// æ³¨æ„, æ²¡æœ‰å¿…è¦ç›‘å¬"/locks"çš„å­èŠ‚ç‚¹çš„å˜åŒ–æƒ…å†µ
 			List<String> childrenNodes = zk.getChildren("/" + groupNode, false);
 
-			// È¡³öËùÓĞlockNameµÄËø
+			// å–å‡ºæ‰€æœ‰lockNameçš„é”
 			List<String> lockObjects = new ArrayList<String>();
 			for (String node : childrenNodes) {
 				String _node = node.split(splitStr)[0];
@@ -110,23 +110,23 @@ public class ZooKeeperDistributeSeqLoc implements Lock, Watcher {
 				}
 			}
 
-			// ÁĞ±íÖĞÖ»ÓĞÒ»¸ö×Ó½Úµã, ÄÇ¿Ï¶¨¾ÍÊÇthisPath, ËµÃ÷client»ñµÃËø
+			// åˆ—è¡¨ä¸­åªæœ‰ä¸€ä¸ªå­èŠ‚ç‚¹, é‚£è‚¯å®šå°±æ˜¯thisPath, è¯´æ˜clientè·å¾—é”
 			if (lockObjects.size() == 1) {
 				return true;
 			} else {
 				String thisNode = thisPath.substring(("/" + groupNode + "/").length());
-				// ÅÅĞò
+				// æ’åº
 				Collections.sort(lockObjects);
 				int index = lockObjects.indexOf(thisNode);
 				if (index == -1) {
 					// never happened
 				} else if (index == 0) {
-					// inddx == 0, ËµÃ÷thisNodeÔÚÁĞ±íÖĞ×îĞ¡, »ñµÃËø
+					// inddx == 0, è¯´æ˜thisNodeåœ¨åˆ—è¡¨ä¸­æœ€å°, è·å¾—é”
 					return true;
 				} else {
-					// »ñµÃÅÅÃû±ÈthisPathÇ°1Î»µÄ½Úµã
+					// è·å¾—æ’åæ¯”thisPathå‰1ä½çš„èŠ‚ç‚¹
 					this.waitPath = "/" + groupNode + "/" + lockObjects.get(index - 1);
-					// ÔÚwaitPathÉÏ×¢²á¼àÌıÆ÷, µ±waitPath±»É¾³ıÊ±, zookeeper»á»Øµ÷¼àÌıÆ÷µÄprocess·½·¨
+					// åœ¨waitPathä¸Šæ³¨å†Œç›‘å¬å™¨, å½“waitPathè¢«åˆ é™¤æ—¶, zookeeperä¼šå›è°ƒç›‘å¬å™¨çš„processæ–¹æ³•
 					zk.getData(waitPath, true, new Stat());
 				}
 			}
@@ -145,7 +145,7 @@ public class ZooKeeperDistributeSeqLoc implements Lock, Watcher {
 	@Override
 	public void unlock() {
 		try {
-			System.out.println("ÊÍ·ÅËø {}" + thisPath);
+			System.out.println("é‡Šæ”¾é” {}" + thisPath);
 			zk.delete(thisPath, -1);
 			thisPath = null;
 			zk.close();
@@ -161,11 +161,11 @@ public class ZooKeeperDistributeSeqLoc implements Lock, Watcher {
 		return null;
 	}
 
-	//watcher ¼àÊÓÆ÷£¬ É¾³ıËøºó»½ĞÑ
+	//watcher ç›‘è§†å™¨ï¼Œ åˆ é™¤é”åå”¤é†’
 	@Override
 	public void process(WatchedEvent event) {
 		try {
-			// ·¢ÉúÁËwaitPathµÄÉ¾³ıÊÂ¼ş
+			// å‘ç”Ÿäº†waitPathçš„åˆ é™¤äº‹ä»¶
 			if (event.getType() == EventType.NodeDeleted && event.getPath().equals(waitPath)) {
 				this.latch.countDown();
 			}
@@ -191,7 +191,7 @@ public class ZooKeeperDistributeSeqLoc implements Lock, Watcher {
 	public static void main(String[] args) {
 		ExecutorService tPool = Executors.newFixedThreadPool(10);
 		ZooKeeperDistributeSeqLoc zdsLock = new ZooKeeperDistributeSeqLoc("127.0.0.1:2181", "Sqe");
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//ÉèÖÃÈÕÆÚ¸ñÊ½
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//è®¾ç½®æ—¥æœŸæ ¼å¼
 
 		zdsLock.lock();
 		try {

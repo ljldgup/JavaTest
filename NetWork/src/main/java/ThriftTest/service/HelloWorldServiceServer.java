@@ -10,7 +10,7 @@ import org.apache.thrift.transport.TTransportException;
 import ThriftTest.service.server.HelloWorld;
 
 /**
- * ·şÎñ¶Ë
+ * æœåŠ¡ç«¯
 
  */
 
@@ -20,19 +20,19 @@ public class HelloWorldServiceServer {
     public static void main(String[] args) throws TTransportException {
         System.out.println("server started ");
  
-        // ¹ØÁª´¦ÀíÆ÷
+        // å…³è”å¤„ç†å™¨
         TProcessor tProcessor = new HelloWorld.Processor<HelloWorld.Iface>(new HelloWorldServiceImpl());
  
-        // ÉèÖÃ·şÎñ¶Ë¿ÚÎª 8080
+        // è®¾ç½®æœåŠ¡ç«¯å£ä¸º 8080
         TServerSocket serverSocket = new TServerSocket(8080);
  
-        // ¼òµ¥µÄµ¥Ïß³Ì·şÎñÄ£ĞÍ
+        // ç®€å•çš„å•çº¿ç¨‹æœåŠ¡æ¨¡å‹
         TServer.Args tArgs = new TServer.Args(serverSocket);
         tArgs.processor(tProcessor);
-        // ÉèÖÃĞ­Òé¹¤³§Îª TBinaryProtocol.Factory
+        // è®¾ç½®åè®®å·¥å‚ä¸º TBinaryProtocol.Factory
         tArgs.protocolFactory(new TBinaryProtocol.Factory());
         TServer server = new TSimpleServer(tArgs);
-        // Æô¶¯·şÎñ
+        // å¯åŠ¨æœåŠ¡
         server.serve();
     }
  

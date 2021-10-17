@@ -10,17 +10,17 @@ import java.io.InputStream;
 public class MybatisTest {
    public static void main(String[] args) throws Exception {
 	   System.out.println(System.getProperty("user.dir"));
-      // Ö¸¶¨È«¾ÖÅäÖÃÎÄ¼ş
+      // æŒ‡å®šå…¨å±€é…ç½®æ–‡ä»¶
       String resource = "mybatis-config.xml";
-      // ¶ÁÈ¡ÅäÖÃÎÄ¼ş
+      // è¯»å–é…ç½®æ–‡ä»¶
       InputStream inputStream = Resources.getResourceAsStream(resource);
-      // ¹¹½¨sqlSessionFactory
+      // æ„å»ºsqlSessionFactory
       SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-      // »ñÈ¡sqlSession
+      // è·å–sqlSession
       SqlSession sqlSession = sqlSessionFactory.openSession();
       try {
-         // ²Ù×÷CRUD£¬µÚÒ»¸ö²ÎÊı£ºÖ¸¶¨statement£¬¹æÔò£ºÃüÃû¿Õ¼ä+¡°.¡±+statementId
-         // µÚ¶ş¸ö²ÎÊı£ºÖ¸¶¨´«ÈësqlµÄ²ÎÊı£ºÕâÀïÊÇÓÃ»§id
+         // æ“ä½œCRUDï¼Œç¬¬ä¸€ä¸ªå‚æ•°ï¼šæŒ‡å®šstatementï¼Œè§„åˆ™ï¼šå‘½åç©ºé—´+â€œ.â€+statementId
+         // ç¬¬äºŒä¸ªå‚æ•°ï¼šæŒ‡å®šä¼ å…¥sqlçš„å‚æ•°ï¼šè¿™é‡Œæ˜¯ç”¨æˆ·id
          User user = sqlSession.selectOne("MyMapper.selectUser", 1);
          System.out.println(user);
       } finally {

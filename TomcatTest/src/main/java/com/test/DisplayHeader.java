@@ -12,17 +12,17 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/DisplayHeader")
 
-//À©Õ¹ HttpServlet Àà
+//æ‰©å±• HttpServlet ç±»
 public class DisplayHeader extends HttpServlet {
 
-    // ´¦Àí GET ·½·¨ÇëÇóµÄ·½·¨
+    // å¤„ç† GET æ–¹æ³•è¯·æ±‚çš„æ–¹æ³•
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        // ÉèÖÃÏìÓ¦ÄÚÈİÀàĞÍ
+        // è®¾ç½®å“åº”å†…å®¹ç±»å‹
         response.setContentType("text/html;charset=UTF-8");
 
         PrintWriter out = response.getWriter();
-        String title = "HTTP Header ÇëÇóÊµÀı - ²ËÄñ½Ì³ÌÊµÀı";
+        String title = "HTTP Header è¯·æ±‚å®ä¾‹ - èœé¸Ÿæ•™ç¨‹å®ä¾‹";
         String docType =
             "<!DOCTYPE html> \n";
             out.println(docType +
@@ -32,7 +32,7 @@ public class DisplayHeader extends HttpServlet {
             "<h1 align=\"center\">" + title + "</h1>\n" +
             "<table width=\"100%\" border=\"1\" align=\"center\">\n" +
             "<tr bgcolor=\"#949494\">\n" +
-            "<th>Header Ãû³Æ</th><th>Header Öµ</th>\n"+
+            "<th>Header åç§°</th><th>Header å€¼</th>\n"+
             "</tr>\n");
 
         Enumeration headerNames = request.getHeaderNames();
@@ -45,7 +45,7 @@ public class DisplayHeader extends HttpServlet {
         }
         out.println("</table>\n</body></html>");
     }
-    // ´¦Àí POST ·½·¨ÇëÇóµÄ·½·¨
+    // å¤„ç† POST æ–¹æ³•è¯·æ±‚çš„æ–¹æ³•
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }

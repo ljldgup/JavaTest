@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-//"abc" ->[a,b,c] 扁平化，变成多个元素
+//"abc" ->[a,b,c] 鎵佸钩鍖栵紝鍙樻垚澶氫釜鍏冪礌
 public class FlatMap {
 	public static void main(String[] args) {
         String[] words = new String[]{"Hello","World"};

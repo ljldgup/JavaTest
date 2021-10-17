@@ -25,7 +25,7 @@ public class Overflow {
         int i = 0;
         try {
             while(true) {
-                // list�������ã�����Full GC ���� 
+                // list保留引用，避免Full GC 回收 
                 list.add(new OOMObject());
                 i++;
                 if(i%100000 == 0) System.out.println(i + " objects");
@@ -64,9 +64,9 @@ public class Overflow {
         }
     }
  
-    // ���̷߳�ʽ���ջ�ڴ���� OutOfMemoryError
-    //ÿ���߳���Ҫһ��ջ�ռ䣬����Xss�������߳�����
-    //���иô���������ϵͳ������������
+    // 多线程方式造成栈内存溢出 OutOfMemoryError
+    //每个线程需要一个栈空间，降低Xss能增加线程数量
+    //运行该代码可能造成系统假死！！！！
     public void stackLeakByThread() {
         while(true) {
             Thread thread = new Thread(() -> dontStop());
@@ -76,12 +76,12 @@ public class Overflow {
         }
     }
 
-    //�������������̬�����࣬����Ԫ�ռ������-XX:MetaspaceSize
+    //方法区溢出，动态载入类，导致元空间溢出，-XX:MetaspaceSize
     //JDK 1.7 PermGen OOM, JDK 1.8 Metaspace OOM
-    //��ˣ����Դ�����֤ JDK 1.7 �� 1.8 ���ַ������������ô�ת�Ƶ����У����� JDK 1.8 ���Ѿ����������ô��Ľ��ۡ�
-    //�����Ϣ����Ԫ�ռ䣬Ԫ�ռ䲢����������У�����ʹ�ñ����ڴ档��ˣ�Ĭ������£�Ԫ�ռ�Ĵ�С���ܱ����ڴ����ƣ�������ͨ�����²�����ָ��Ԫ�ռ�Ĵ�С��
-    //Ԫ�ռ�����-XX:MetaspaceSize=8m -XX:MaxMetaspaceSize=80m
-    //Ŀǰ�޷�����metaSpaceOOM......�������ַ����Ѿ�ʧЧ
+    //因此，可以大致验证 JDK 1.7 和 1.8 将字符串常量由永久代转移到堆中，并且 JDK 1.8 中已经不存在永久代的结论。
+    //类的信息移入元空间，元空间并不在虚拟机中，而是使用本地内存。因此，默认情况下，元空间的大小仅受本地内存限制，但可以通过以下参数来指定元空间的大小：
+    //元空间设置-XX:MetaspaceSize=8m -XX:MaxMetaspaceSize=80m
+    //目前无法重现metaSpaceOOM......可能这种方法已经失效
     
     public void  metaSpaceOOM() {
     	int i = 0;

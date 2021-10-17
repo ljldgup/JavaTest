@@ -31,27 +31,27 @@ public class HelloForm extends HttpServlet {
 	 *      response)
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// ÎªÃû×ÖºÍĞÕÊÏ´´½¨ Cookie
-		Cookie name = new Cookie("name", URLEncoder.encode(request.getParameter("name"), "UTF-8")); // ÖĞÎÄ×ªÂë
+		// ä¸ºåå­—å’Œå§“æ°åˆ›å»º Cookie
+		Cookie name = new Cookie("name", URLEncoder.encode(request.getParameter("name"), "UTF-8")); // ä¸­æ–‡è½¬ç 
 		Cookie url = new Cookie("url", request.getParameter("url"));
 
-		// ÎªÁ½¸ö Cookie ÉèÖÃ¹ıÆÚÈÕÆÚÎª 24 Ğ¡Ê±ºó
+		// ä¸ºä¸¤ä¸ª Cookie è®¾ç½®è¿‡æœŸæ—¥æœŸä¸º 24 å°æ—¶å
 		name.setMaxAge(60 * 60 * 24);
 		url.setMaxAge(60 * 60 * 24);
 
-		// ÔÚÏìÓ¦Í·ÖĞÌí¼ÓÁ½¸ö Cookie
+		// åœ¨å“åº”å¤´ä¸­æ·»åŠ ä¸¤ä¸ª Cookie
 		response.addCookie(name);
 		response.addCookie(url);
 
-		// ÉèÖÃÏìÓ¦ÄÚÈİÀàĞÍ
+		// è®¾ç½®å“åº”å†…å®¹ç±»å‹
 		response.setContentType("text/html;charset=UTF-8");
 
 		PrintWriter out = response.getWriter();
-		String title = "ÉèÖÃ Cookie ÊµÀı";
+		String title = "è®¾ç½® Cookie å®ä¾‹";
 		String docType = "<!DOCTYPE html>\n";
 		out.println(docType + "<html>\n" + "<head><title>" + title + "</title></head>\n"
 				+ "<body bgcolor=\"#f0f0f0\">\n" + "<h1 align=\"center\">" + title + "</h1>\n" + "<ul>\n"
-				+ "  <li><b>Õ¾µãÃû£º</b>£º" + request.getParameter("name") + "\n</li>" + "  <li><b>Õ¾µã URL£º</b>£º"
+				+ "  <li><b>ç«™ç‚¹åï¼š</b>ï¼š" + request.getParameter("name") + "\n</li>" + "  <li><b>ç«™ç‚¹ URLï¼š</b>ï¼š"
 				+ request.getParameter("url") + "\n</li>" + "</ul>\n" + "</body></html>");
 	}
 

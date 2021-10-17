@@ -17,7 +17,7 @@ public class ReadCompletionHandler implements CompletionHandler<Integer, ByteBuf
     }
  
     /**
-     * ÒµÎñ´¦Àí£¬´ÓByteBuffer¶ÁÈ¡ÒµÎñÊı¾İ£¬×öÒµÎñ²Ù×÷
+     * ä¸šåŠ¡å¤„ç†ï¼Œä»ByteBufferè¯»å–ä¸šåŠ¡æ•°æ®ï¼Œåšä¸šåŠ¡æ“ä½œ
      * @param result
      * @param attachment
      */
@@ -37,24 +37,24 @@ public class ReadCompletionHandler implements CompletionHandler<Integer, ByteBuf
     }
  
     /**
-     * Íù¿Í»§¶ËµÄĞ´²Ù×÷
+     * å¾€å®¢æˆ·ç«¯çš„å†™æ“ä½œ
      * @param currentTime
      */
  
     public  void dowrite(String currentTime){
         if(currentTime != null && currentTime.trim().length() > 0){
             byte[] bytes = currentTime.getBytes();
-            //·ÖÅäÒ»¸öĞ´»º´æ
+            //åˆ†é…ä¸€ä¸ªå†™ç¼“å­˜
             ByteBuffer write = ByteBuffer.allocate(bytes.length);
             System.out.println("reponsbody=" + currentTime);
-            //½«·µ»ØÊı¾İĞ´Èë»º´æ
+            //å°†è¿”å›æ•°æ®å†™å…¥ç¼“å­˜
             write.put(bytes);
             write.flip();
-            //½«»º´æĞ´½øchannel
+            //å°†ç¼“å­˜å†™è¿›channel
             channel.write(write, write, new CompletionHandler<Integer, ByteBuffer>() {
                 @Override
                 public void completed(Integer result, ByteBuffer buffer) {
-                    //Èç¹û·¢ÏÖ»¹ÓĞÊı¾İÃ»Ğ´Íê£¬¼ÌĞøĞ´
+                    //å¦‚æœå‘ç°è¿˜æœ‰æ•°æ®æ²¡å†™å®Œï¼Œç»§ç»­å†™
                     if(buffer.hasRemaining()) {
                         channel.write(buffer, buffer, this);
                     }
@@ -63,7 +63,7 @@ public class ReadCompletionHandler implements CompletionHandler<Integer, ByteBuf
                 @Override
                 public void failed(Throwable exc, ByteBuffer attachment) {
                     try {
-                        //Ğ´Ê§°Ü£¬¹Ø±Õchannel£¬²¢ÊÍ·ÅÓëchannelÏà¹ØÁªµÄÒ»ÇĞ×ÊÔ´
+                        //å†™å¤±è´¥ï¼Œå…³é—­channelï¼Œå¹¶é‡Šæ”¾ä¸channelç›¸å…³è”çš„ä¸€åˆ‡èµ„æº
                         channel.close();
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -77,7 +77,7 @@ public class ReadCompletionHandler implements CompletionHandler<Integer, ByteBuf
     @Override
     public void failed(Throwable exc, ByteBuffer attachment) {
         try {
-            //¶Á£¬¹Ø±Õchannel£¬²¢ÊÍ·ÅÓëchannelÏà¹ØÁªµÄÒ»ÇĞ×ÊÔ´
+            //è¯»ï¼Œå…³é—­channelï¼Œå¹¶é‡Šæ”¾ä¸channelç›¸å…³è”çš„ä¸€åˆ‡èµ„æº
             this.channel.close();
         } catch (IOException e) {
             e.printStackTrace();

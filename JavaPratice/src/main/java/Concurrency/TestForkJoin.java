@@ -11,11 +11,11 @@ public class TestForkJoin {
 
 	private static class ForkJoinCalculate extends RecursiveTask<Long> {
 
-		private static final long serialVersionUID = 1234567890L;// ĞòÁĞºÅ
+		private static final long serialVersionUID = 1234567890L;// åºåˆ—å·
 
 		private long start;
 		private long end;
-		private static final long THRESHOLD = 2500000000L;// ÁÙ½çÖµ
+		private static final long THRESHOLD = 2500000000L;// ä¸´ç•Œå€¼
 
 		public ForkJoinCalculate(long start, long end) {
 			this.start = start;
@@ -25,7 +25,7 @@ public class TestForkJoin {
 		@Override
 		protected Long compute() {
 			long length = end - start;
-			//length Ğ¡ÓÚÒ»¶¨µÄãĞÖµ¾ÍÖ±½Ó¼ÆËã£¬·ñÔòµİ¹éµ÷ÓÃ×Ô¼º
+			//length å°äºä¸€å®šçš„é˜ˆå€¼å°±ç›´æ¥è®¡ç®—ï¼Œå¦åˆ™é€’å½’è°ƒç”¨è‡ªå·±
 			if (length <= THRESHOLD) {
 				long sum = 0;
 				for (long i = start; i <= end; i++) {
@@ -47,8 +47,8 @@ public class TestForkJoin {
 	}
 
 	public static void main(String[] xx) {
-		//ÊıÁ¿½ÏÉÙForkJoin¿ì£¬ÊıÁ¿Ôö¼ÓºóParallelStreamsÊ±¼äÓÅÊÆÃ÷ÏÔ£¬ForkJoin±¾ÉíĞèÒª½øĞĞ·Ö¸î²Ù×÷
-		//ParallelStreams±¾ÖÊÉÏÊÇÓÃForkJoinPoolÊµÏÖµÄ
+		//æ•°é‡è¾ƒå°‘ForkJoinå¿«ï¼Œæ•°é‡å¢åŠ åParallelStreamsæ—¶é—´ä¼˜åŠ¿æ˜æ˜¾ï¼ŒForkJoinæœ¬èº«éœ€è¦è¿›è¡Œåˆ†å‰²æ“ä½œ
+		//ParallelStreamsæœ¬è´¨ä¸Šæ˜¯ç”¨ForkJoinPoolå®ç°çš„
 		test1();
 		test2();
 	}
@@ -61,7 +61,7 @@ public class TestForkJoin {
 		System.out.println(sum);
 
 		Instant end = Instant.now();
-		System.out.println("ÏûºÄÊ±¼ä" + Duration.between(start, end).toMillis() + "ms");// ÏûºÄÊ±¼ä3409ms
+		System.out.println("æ¶ˆè€—æ—¶é—´" + Duration.between(start, end).toMillis() + "ms");// æ¶ˆè€—æ—¶é—´3409ms
 	}
 
 	private static void test2() {
@@ -71,6 +71,6 @@ public class TestForkJoin {
 		System.out.println(sum);
 
 		Instant end = Instant.now();
-		System.out.println("ÏûºÄÊ±¼ä" + Duration.between(start, end).toMillis() + "ms");// ÏûºÄÊ±¼ä2418ms
+		System.out.println("æ¶ˆè€—æ—¶é—´" + Duration.between(start, end).toMillis() + "ms");// æ¶ˆè€—æ—¶é—´2418ms
 	}
 }

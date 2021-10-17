@@ -29,10 +29,10 @@ public class ReadParams extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // ÉèÖÃÏìÓ¦ÄÚÈİÀàĞÍ
+        // è®¾ç½®å“åº”å†…å®¹ç±»å‹
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String title = "¶ÁÈ¡ËùÓĞµÄ±íµ¥Êı¾İ";
+        String title = "è¯»å–æ‰€æœ‰çš„è¡¨å•æ•°æ®";
         String docType =
             "<!doctype html public \"-//w3c//dtd html 4.0 " +
             "transitional//en\">\n";
@@ -43,7 +43,7 @@ public class ReadParams extends HttpServlet {
             "<h1 align=\"center\">" + title + "</h1>\n" +
             "<table width=\"100%\" border=\"1\" align=\"center\">\n" +
             "<tr bgcolor=\"#949494\">\n" +
-            "<th>²ÎÊıÃû³Æ</th><th>²ÎÊıÖµ</th>\n"+
+            "<th>å‚æ•°åç§°</th><th>å‚æ•°å€¼</th>\n"+
             "</tr>\n");
 
         Enumeration paramNames = request.getParameterNames();
@@ -53,15 +53,15 @@ public class ReadParams extends HttpServlet {
             out.print("<tr><td>" + paramName + "</td>\n");
             String[] paramValues =
             request.getParameterValues(paramName);
-            // ¶ÁÈ¡µ¥¸öÖµµÄÊı¾İ
+            // è¯»å–å•ä¸ªå€¼çš„æ•°æ®
             if (paramValues.length == 1) {
                 String paramValue = paramValues[0];
                 if (paramValue.length() == 0)
-                    out.println("<td><i>Ã»ÓĞÖµ</i></td>");
+                    out.println("<td><i>æ²¡æœ‰å€¼</i></td>");
                 else
                     out.println("<td>" + paramValue + "</td>");
             } else {
-                // ¶ÁÈ¡¶à¸öÖµµÄÊı¾İ
+                // è¯»å–å¤šä¸ªå€¼çš„æ•°æ®
                 out.println("<td><ul>");
                 for(int i=0; i < paramValues.length; i++) {
                 out.println("<li>" + paramValues[i]);

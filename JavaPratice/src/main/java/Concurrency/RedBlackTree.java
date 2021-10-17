@@ -52,9 +52,9 @@ public class RedBlackTree {
         		new ThreadPoolExecutor.AbortPolicy());
         
         IntStream.range(0, 8).forEach(i -> treeThread.add(new RedBlackTree.thread(i)));
-		//Ã²ËÆºìºÚÊ÷·µ»ØµÄpollLastÖµµÃÊÇ×îÐ¡µÄ
-		//µÚÒ»¸ö½ø³ÌÖ±½ÓÔËÐÐ£¬ºóÃæ¶ÓÁÐÖÐµÄ°´ÓÅÏÈ¼¶Ö´ÐÐ
-		//¾Ü¾ø²ßÂÔºÍÈÝÁ¿ÎÞÐ§
+		//è²Œä¼¼çº¢é»‘æ ‘è¿”å›žçš„pollLastå€¼å¾—æ˜¯æœ€å°çš„
+		//ç¬¬ä¸€ä¸ªè¿›ç¨‹ç›´æŽ¥è¿è¡Œï¼ŒåŽé¢é˜Ÿåˆ—ä¸­çš„æŒ‰ä¼˜å…ˆçº§æ‰§è¡Œ
+		//æ‹’ç»ç­–ç•¥å’Œå®¹é‡æ— æ•ˆ
 		treeThread.parallelStream().forEach(t ->priorityPool.execute(t));
 		priorityPool.shutdown();
 	}

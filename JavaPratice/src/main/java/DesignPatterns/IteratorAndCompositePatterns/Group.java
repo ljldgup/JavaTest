@@ -6,7 +6,7 @@ public abstract class Group {
 
 	protected static int blanks;
 	
-	//Ê÷ĞÎÏÔÊ¾
+	//æ ‘å½¢æ˜¾ç¤º
 	public void format() {
 		int i = 0;
 		while(i<blanks) {

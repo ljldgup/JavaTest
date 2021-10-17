@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class CalendarController {
 
-	//´Ë´¦Èç¹ûÄ£°åÎ»ÓÚ\src\main\resources\templatesÏÂ£¬ĞèÒªÔÚbuildÎÄ¼şÖĞ°üº¬spring-boot-devtools°ü
-	//spring-boot-devtools Í¬Ê±¿ÉÒÔÊµÏÖÈÈ²¿Êğ£¬ĞŞ¸Äºó¼°Ê±ÉúĞ§
+	//æ­¤å¤„å¦‚æœæ¨¡æ¿ä½äº\src\main\resources\templatesä¸‹ï¼Œéœ€è¦åœ¨buildæ–‡ä»¶ä¸­åŒ…å«spring-boot-devtoolsåŒ…
+	//spring-boot-devtools åŒæ—¶å¯ä»¥å®ç°çƒ­éƒ¨ç½²ï¼Œä¿®æ”¹ååŠæ—¶ç”Ÿæ•ˆ
     @GetMapping("/calendar")
     public String calendar() {
         return "calendar";

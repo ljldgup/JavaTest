@@ -18,11 +18,11 @@ public class CheckBox extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        // ÉèÖÃÏìÓ¦ÄÚÈİÀàĞÍ
+        // è®¾ç½®å“åº”å†…å®¹ç±»å‹
         response.setContentType("text/html;charset=UTF-8");
 
         PrintWriter out = response.getWriter();
-        String title = "¶ÁÈ¡¸´Ñ¡¿òÊı¾İ";
+        String title = "è¯»å–å¤é€‰æ¡†æ•°æ®";
         String docType = "<!DOCTYPE html> \n";
             out.println(docType +
                 "<html>\n" +
@@ -30,17 +30,17 @@ public class CheckBox extends HttpServlet {
                 "<body bgcolor=\"#f0f0f0\">\n" +
                 "<h1 align=\"center\">" + title + "</h1>\n" +
                 "<ul>\n" +
-                "  <li><b>²ËÄñ°´½Ì³Ì±êÊ¶£º</b>: "
+                "  <li><b>èœé¸ŸæŒ‰æ•™ç¨‹æ ‡è¯†ï¼š</b>: "
                 + request.getParameter("runoob") + "\n" +
-                "  <li><b>Google ±êÊ¶£º</b>: "
+                "  <li><b>Google æ ‡è¯†ï¼š</b>: "
                 + request.getParameter("google") + "\n" +
-                "  <li><b>ÌÔ±¦±êÊ¶£º</b>: "
+                "  <li><b>æ·˜å®æ ‡è¯†ï¼š</b>: "
                 + request.getParameter("taobao") + "\n" +
                 "</ul>\n" +
                 "</body></html>");
     }
     
-    // ´¦Àí POST ·½·¨ÇëÇóµÄ·½·¨
+    // å¤„ç† POST æ–¹æ³•è¯·æ±‚çš„æ–¹æ³•
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }

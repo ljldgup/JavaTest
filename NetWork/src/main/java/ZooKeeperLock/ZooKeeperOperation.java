@@ -17,7 +17,7 @@ public class ZooKeeperOperation {
 	// create static instance for zookeeper class.
 	private static ZooKeeper zk;
 
-	// ±ÕËøÓÃÓÚµÈ´ı¼à¿Ø
+	// é—­é”ç”¨äºç­‰å¾…ç›‘æ§
 	final CountDownLatch connectedSignal = new CountDownLatch(1);
 
 	public ZooKeeperOperation(String host, int port) {

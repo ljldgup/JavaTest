@@ -32,31 +32,31 @@ public class DeleteCookies extends HttpServlet {
     {
         Cookie cookie = null;
         Cookie[] cookies = null;
-        // »ñÈ¡Óë¸ÃÓòÏà¹ØµÄ Cookie µÄÊı×é
+        // è·å–ä¸è¯¥åŸŸç›¸å…³çš„ Cookie çš„æ•°ç»„
         cookies = request.getCookies();
         
-            // ÉèÖÃÏìÓ¦ÄÚÈİÀàĞÍ
+            // è®¾ç½®å“åº”å†…å®¹ç±»å‹
         response.setContentType("text/html;charset=UTF-8");
    
         PrintWriter out = response.getWriter();
-        String title = "É¾³ı Cookie ÊµÀı";
+        String title = "åˆ é™¤ Cookie å®ä¾‹";
         String docType = "<!DOCTYPE html>\n";
         out.println(docType +
                   "<html>\n" +
                   "<head><title>" + title + "</title></head>\n" +
                   "<body bgcolor=\"#f0f0f0\">\n" );
          if( cookies != null ){
-           out.println("<h2>Cookie Ãû³ÆºÍÖµ</h2>");
+           out.println("<h2>Cookie åç§°å’Œå€¼</h2>");
            for (int i = 0; i < cookies.length; i++){
               cookie = cookies[i];
               if((cookie.getName( )).compareTo("JSESSIONID") != 0 ){
                    cookie.setMaxAge(0);
                    response.addCookie(cookie);
-                   out.print("ÒÑÉ¾³ıµÄ cookie£º" + 
+                   out.print("å·²åˆ é™¤çš„ cookieï¼š" + 
                                 cookie.getName( ) + "<br/>");
               }
-              out.print("Ãû³Æ£º" + cookie.getName( ) + "£¬");
-              out.print("Öµ£º" + cookie.getValue( )+" <br/>");
+              out.print("åç§°ï¼š" + cookie.getName( ) + "ï¼Œ");
+              out.print("å€¼ï¼š" + cookie.getValue( )+" <br/>");
            }
         }else{
             out.println(

@@ -6,7 +6,7 @@ public class Beef extends HotSpot{
 		super();
 		// TODO Auto-generated constructor stub
 		hotSpot = hs;
-		component = "Å£Èâ";
+		component = "ç‰›è‚‰";
 	}
 
 	@Override

@@ -5,14 +5,14 @@ public class HuaWei extends PhoneStore {
 	public HuaWei() {
 		super();
 		// TODO Auto-generated constructor stub
-		//³éÏó¹¤³§Éú²ú£¬ÎÒÓÃÁË¾²Ì¬·½·¨¡£
+		//æŠ½è±¡å·¥å‚ç”Ÿäº§ï¼Œæˆ‘ç”¨äº†é™æ€æ–¹æ³•ã€‚
 		core = ProcessorFactory.createProcessor("HuaWei");
 	}
 
 	@Override
 	public String CreateOrder() {
 		// TODO Auto-generated method stub
-		//¹¤³§·½·¨Éú²ú£¬Ã»ÓĞÔÚĞÂ½¨²úÆ·Àà£¬Ö±½ÓÓÃÁË×Ö·û´®¡£
+		//å·¥å‚æ–¹æ³•ç”Ÿäº§ï¼Œæ²¡æœ‰åœ¨æ–°å»ºäº§å“ç±»ï¼Œç›´æ¥ç”¨äº†å­—ç¬¦ä¸²ã€‚
 		return "MATE 20";
 	}
 	

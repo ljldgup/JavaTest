@@ -34,7 +34,7 @@ public class MainController {
 	}
 	
 	
-	//Transactional事务申明，采用默认设置，新建一个事务TransactionalTest1发生了回滚，TransactionalTest2
+	//Transactional浜嬪姟鐢虫槑锛岄噰鐢ㄩ粯璁よ缃紝鏂板缓涓�涓簨鍔ransactionalTest1鍙戠敓浜嗗洖婊氾紝TransactionalTest2
 	@Transactional
 	//@Transactional(rollbackFor = {SQLException.class})
 	public void rollback() {
@@ -43,7 +43,7 @@ public class MainController {
 		n.setEmail("123333");
 		userRepository.save(n);
 	    try{
-	    	//@Transactional默认情况下只回滚RuntimeException和Error。可以用rollbackFor = {SQLException.class}
+	    	//@Transactional榛樿鎯呭喌涓嬪彧鍥炴粴RuntimeException鍜孍rror銆傚彲浠ョ敤rollbackFor = {SQLException.class}
 	    	//throw new SQLException("exception");
 	    	throw new SQLException("exception");
 	    }catch(Exception e){

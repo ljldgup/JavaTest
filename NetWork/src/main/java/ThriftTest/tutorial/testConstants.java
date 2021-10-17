@@ -10,8 +10,8 @@ package ThriftTest.tutorial;
 public class testConstants {
 
   /**
-   * Thrift »¹ÔÊĞíÄã¶¨ÒåÓÃÓÚ¿çÓïÑÔµÄ³£Á¿.
-   * ¸´ÔÓµÄÀàĞÍºÍ½á¹¹Ìå¿ÉÒÔÍ¨¹ıjson±íÊ¾·¨½øĞĞÖ¸¶¨.
+   * Thrift è¿˜å…è®¸ä½ å®šä¹‰ç”¨äºè·¨è¯­è¨€çš„å¸¸é‡.
+   * å¤æ‚çš„ç±»å‹å’Œç»“æ„ä½“å¯ä»¥é€šè¿‡jsonè¡¨ç¤ºæ³•è¿›è¡ŒæŒ‡å®š.
    */
   public static final int INT32CONSTANT = 9853;
 

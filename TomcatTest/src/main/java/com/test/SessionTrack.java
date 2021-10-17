@@ -21,14 +21,14 @@ public class SessionTrack extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        // Èç¹û²»´æÔÚ session »á»°£¬Ôò´´½¨Ò»¸ö session ¶ÔÏó
+        // å¦‚æœä¸å­˜åœ¨ session ä¼šè¯ï¼Œåˆ™åˆ›å»ºä¸€ä¸ª session å¯¹è±¡
         HttpSession session = request.getSession(true);
-        // »ñÈ¡ session ´´½¨Ê±¼ä
+        // è·å– session åˆ›å»ºæ—¶é—´
         Date createTime = new Date(session.getCreationTime());
-        // »ñÈ¡¸ÃÍøÒ³µÄ×îºóÒ»´Î·ÃÎÊÊ±¼ä
+        // è·å–è¯¥ç½‘é¡µçš„æœ€åä¸€æ¬¡è®¿é—®æ—¶é—´
         Date lastAccessTime = new Date(session.getLastAccessedTime());
          
-        //ÉèÖÃÈÕÆÚÊä³öµÄ¸ñÊ½  
+        //è®¾ç½®æ—¥æœŸè¾“å‡ºçš„æ ¼å¼  
         SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
     
         String title = "Servlet Session";
@@ -41,9 +41,9 @@ public class SessionTrack extends HttpServlet {
         }
 
     
-        // ¼ì²éÍøÒ³ÉÏÊÇ·ñÓĞĞÂµÄ·ÃÎÊÕß
+        // æ£€æŸ¥ç½‘é¡µä¸Šæ˜¯å¦æœ‰æ–°çš„è®¿é—®è€…
         if (session.isNew()){
-            title = "Servlet Session ÊµÀı - ²ËÄñ½Ì³Ì";
+            title = "Servlet Session å®ä¾‹ - èœé¸Ÿæ•™ç¨‹";
              session.setAttribute(userIDKey, userID);
         } else {
              visitCount = (Integer)session.getAttribute(visitCountKey);
@@ -52,7 +52,7 @@ public class SessionTrack extends HttpServlet {
         }
         session.setAttribute(visitCountKey,  visitCount);
     
-        // ÉèÖÃÏìÓ¦ÄÚÈİÀàĞÍ
+        // è®¾ç½®å“åº”å†…å®¹ç±»å‹
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
     
@@ -62,27 +62,27 @@ public class SessionTrack extends HttpServlet {
                 "<head><title>" + title + "</title></head>\n" +
                 "<body bgcolor=\"#f0f0f0\">\n" +
                 "<h1 align=\"center\">" + title + "</h1>\n" +
-                 "<h2 align=\"center\">Session ĞÅÏ¢</h2>\n" +
+                 "<h2 align=\"center\">Session ä¿¡æ¯</h2>\n" +
                 "<table border=\"1\" align=\"center\">\n" +
                 "<tr bgcolor=\"#949494\">\n" +
-                "  <th>Session ĞÅÏ¢</th><th>Öµ</th></tr>\n" +
+                "  <th>Session ä¿¡æ¯</th><th>å€¼</th></tr>\n" +
                 "<tr>\n" +
                 "  <td>id</td>\n" +
                 "  <td>" + session.getId() + "</td></tr>\n" +
                 "<tr>\n" +
-                "  <td>´´½¨Ê±¼ä</td>\n" +
+                "  <td>åˆ›å»ºæ—¶é—´</td>\n" +
                 "  <td>" +  df.format(createTime) + 
                 "  </td></tr>\n" +
                 "<tr>\n" +
-                "  <td>×îºó·ÃÎÊÊ±¼ä</td>\n" +
+                "  <td>æœ€åè®¿é—®æ—¶é—´</td>\n" +
                 "  <td>" + df.format(lastAccessTime) + 
                 "  </td></tr>\n" +
                 "<tr>\n" +
-                "  <td>ÓÃ»§ ID</td>\n" +
+                "  <td>ç”¨æˆ· ID</td>\n" +
                 "  <td>" + userID + 
                 "  </td></tr>\n" +
                 "<tr>\n" +
-                "  <td>·ÃÎÊÍ³¼Æ£º</td>\n" +
+                "  <td>è®¿é—®ç»Ÿè®¡ï¼š</td>\n" +
                 "  <td>" + visitCount + "</td></tr>\n" +
                 "</table>\n" +
                 "</body></html>"); 

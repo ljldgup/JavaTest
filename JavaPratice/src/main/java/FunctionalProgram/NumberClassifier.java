@@ -3,17 +3,17 @@ package FunctionalProgram;
 import java.util.stream.IntStream;
 import java.lang.Math;
 
-//ÍêÃÀÊý¼ÆËã
+//å®Œç¾Žæ•°è®¡ç®—
 public class NumberClassifier {
 	public static IntStream factorOf(int number) {
-		// IntStream»¹ÓÐºÜ¶àÆäËûÓÃ·¨
-		//Math.sqrt¼õÐ¡¼ÆËãÁ¿
+		// IntStreamè¿˜æœ‰å¾ˆå¤šå…¶ä»–ç”¨æ³•
+		//Math.sqrtå‡å°è®¡ç®—é‡
 		return IntStream.range(1, (int) (Math.sqrt(number) + 1))
 										.filter(x -> number % x == 0);
 	}
 	
 	public static IntStream AllfactorOf(int number) {
-		// IntStream»¹ÓÐºÜ¶àÆäËûÓÃ·¨
+		// IntStreamè¿˜æœ‰å¾ˆå¤šå…¶ä»–ç”¨æ³•
 		return IntStream.range(1, number)
 										.filter(x -> number % x == 0);
 	}
@@ -37,12 +37,12 @@ public class NumberClassifier {
 	}
 	
 	public static void main(String[] args) {
-		//Êý×Ö·¶Î§´òÁË.parallel()ÓÐÃ÷ÏÔµÄÌáÉý×÷ÓÃ£¬µ«ÊÇË³Ðò»á±»´òÂÒ
+		//æ•°å­—èŒƒå›´æ‰“äº†.parallel()æœ‰æ˜Žæ˜¾çš„æå‡ä½œç”¨ï¼Œä½†æ˜¯é¡ºåºä¼šè¢«æ‰“ä¹±
 		IntStream.range(1, 10900090).parallel()
 								.filter(num -> isPerfect(num))
 								.forEach(perfectNum -> {
 									System.out.print(perfectNum + ":");
-									//ÓëÆäÓÃÔ­À´µÄÌØÊâ´¦Àí£¬²»ÈçÖØÐÂÐ´Ò»¸öÇóÈ«²¿Òò×ÓµÄº¯Êý£¬º¯ÊýÊ½±à³Ì²»±£´æ¹ý³Ì£¡£¡£¡
+									//ä¸Žå…¶ç”¨åŽŸæ¥çš„ç‰¹æ®Šå¤„ç†ï¼Œä¸å¦‚é‡æ–°å†™ä¸€ä¸ªæ±‚å…¨éƒ¨å› å­çš„å‡½æ•°ï¼Œå‡½æ•°å¼ç¼–ç¨‹ä¸ä¿å­˜è¿‡ç¨‹ï¼ï¼ï¼
 									AllfactorOf(perfectNum).forEach(factor -> System.out.print(" " + factor));
 									System.out.println();
 								});

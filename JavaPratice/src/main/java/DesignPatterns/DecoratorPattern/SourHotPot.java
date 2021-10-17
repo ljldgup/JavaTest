@@ -4,7 +4,7 @@ public class SourHotPot extends HotSpot{
 	
 	public SourHotPot() {
 		// TODO Auto-generated constructor stub
-		component = "À·Ã¿";
+		component = "ÈÖ∏Ê±§";
 	}
 
 	@Override

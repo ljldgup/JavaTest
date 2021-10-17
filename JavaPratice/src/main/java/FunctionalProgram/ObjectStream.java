@@ -24,6 +24,6 @@ public class ObjectStream {
 	    System.out.println("anyMatch:" + strings.stream().anyMatch(x->x.startsWith("a")));
 	    System.out.println("Match:" + strings.stream().filter(x->x.startsWith("a")).count());
 	    String mergedString = strings.stream().filter(string -> !string.isEmpty()).collect(Collectors.joining(", "));
-	    System.out.println("ºÏ²¢×Ö·û´®: " + mergedString);
+	    System.out.println("åˆå¹¶å­—ç¬¦ä¸²: " + mergedString);
 	}
 }

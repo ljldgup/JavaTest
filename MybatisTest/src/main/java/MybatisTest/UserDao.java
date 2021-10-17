@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 public interface UserDao {
 
     /**
-     * ¸ù¾İid²éÑ¯ÓÃ»§ĞÅÏ¢
+     * æ ¹æ®idæŸ¥è¯¢ç”¨æˆ·ä¿¡æ¯
      *
      * @param id
      * @return
@@ -15,49 +15,49 @@ public interface UserDao {
     public User queryUserById(String id);
 
     /**
-     * ²éÑ¯ËùÓĞÓÃ»§ĞÅÏ¢
+     * æŸ¥è¯¢æ‰€æœ‰ç”¨æˆ·ä¿¡æ¯
      *
      * @return
      */
     public List<User> queryUserAll();
 
     /**
-     * ĞÂÔöÓÃ»§
+     * æ–°å¢ç”¨æˆ·
      *
      * @param user
      */
     public void insertUser(User user);
 
     /**
-     * ¸üĞÂÓÃ»§ĞÅÏ¢
+     * æ›´æ–°ç”¨æˆ·ä¿¡æ¯
      *
      * @param user
      */
     public void updateUser(User user);
 
     /**
-     * ¸ù¾İidÉ¾³ıÓÃ»§ĞÅÏ¢
+     * æ ¹æ®idåˆ é™¤ç”¨æˆ·ä¿¡æ¯
      *
      * @param id
      */
     public void deleteUser(String id);
     
     /**
-     * #ºÅ
+     * #å·
      * @param username1
      * @return
      */
     public User queryUserListByName1(@Param("username1") String username1);
 
     /**
-     * $ºÅ
+     * $å·
      * @param username2
      * @return
      */
     public List<User> queryUserListByName2(@Param("username2") String username2);
 
     /**
- 	* °´¶à¸öId²éÑ¯
+ 	* æŒ‰å¤šä¸ªIdæŸ¥è¯¢
      * @param ids
      * @return
      */

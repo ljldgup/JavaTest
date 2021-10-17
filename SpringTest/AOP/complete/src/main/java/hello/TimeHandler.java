@@ -6,7 +6,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
-//Component½«µ±Ç°µÄÀà×¢²áÎªbean£¬ BeanÔòÊÇµ±Ç°º¯Êı·µ»ØµÄ¶ÔÏó×÷ÎªBean
+//Componentå°†å½“å‰çš„ç±»æ³¨å†Œä¸ºbeanï¼Œ Beanåˆ™æ˜¯å½“å‰å‡½æ•°è¿”å›çš„å¯¹è±¡ä½œä¸ºBean
 @Component
 @Aspect
 public class TimeHandler
@@ -17,8 +17,8 @@ public class TimeHandler
     @Around("greeting()")
     public void printTime(ProceedingJoinPoint pjp) throws Throwable
     {
-        System.out.println("greetingÔËĞĞÇ°:" + System.currentTimeMillis());
+        System.out.println("greetingè¿è¡Œå‰:" + System.currentTimeMillis());
         pjp.proceed();
-        System.out.println("greetingÔËĞĞºó:" + System.currentTimeMillis());
+        System.out.println("greetingè¿è¡Œå:" + System.currentTimeMillis());
     }
 }

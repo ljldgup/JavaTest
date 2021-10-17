@@ -12,7 +12,7 @@ public class OptionalTest {
 	    System.out.println(opt.isPresent() ? opt.get() : "null ?:");
 	    System.out.println("------------------------------------------------------------------------");
 	    
-	    //map ·µ»ØµÄÈÎÈ»ÊÇoptional£¬ flatMap ·µ»ØµÄÎ´¾­¹ı°ü×°¡£
+	    //map è¿”å›çš„ä»»ç„¶æ˜¯optionalï¼Œ flatMap è¿”å›çš„æœªç»è¿‡åŒ…è£…ã€‚
 	    str = "An original standalone origin story of the iconic villain not seen before on the big screen, "
 	    		+ "it's a gritty character study of Arthur Fleck, a man disregarded by society, "
 	    		+ "and a broader cautionary tale.";

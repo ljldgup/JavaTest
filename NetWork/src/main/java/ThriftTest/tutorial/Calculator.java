@@ -11,14 +11,14 @@ package ThriftTest.tutorial;
 public class Calculator {
 
   /**
-   * ÖØÒªĞÔÄÜ£¬¶¨ÒåÒ»¸öservice.
-   * serviceÖ»ĞèÒªÒ»¸öÃû³Æ£¬²¢¿ÉÒÔÑ¡ÔñÊ¹ÓÃextend¹Ø¼ü×Ö´ÓÁíÒ»¸ö·şÎñ¼Ì³Ğ
+   * é‡è¦æ€§èƒ½ï¼Œå®šä¹‰ä¸€ä¸ªservice.
+   * serviceåªéœ€è¦ä¸€ä¸ªåç§°ï¼Œå¹¶å¯ä»¥é€‰æ‹©ä½¿ç”¨extendå…³é”®å­—ä»å¦ä¸€ä¸ªæœåŠ¡ç»§æ‰¿
    */
   public interface Iface extends ThriftTest.shared.SharedService.Iface {
 
     /**
-     * method¶¨Òå¿´ÆğÀ´ÏñC´úÂë. ÓĞ·µ»ØÀàĞÍ¡¢²ÎÊıÒÔ¼°¿ÉÄÜ»áÅ×³öµÄÒì³£ÁĞ±í
-     * ²ÎÊıÁĞ±íºÍÒì³£ÁĞ±íÊ¹ÓÃÓë½á¹¹Ìå»òÒì³£¶¨ÒåÖĞµÄ×Ö¶ÎÁĞ±íÍêÈ«ÏàÍ¬µÄÓï·¨À´¶¨Òå
+     * methodå®šä¹‰çœ‹èµ·æ¥åƒCä»£ç . æœ‰è¿”å›ç±»å‹ã€å‚æ•°ä»¥åŠå¯èƒ½ä¼šæŠ›å‡ºçš„å¼‚å¸¸åˆ—è¡¨
+     * å‚æ•°åˆ—è¡¨å’Œå¼‚å¸¸åˆ—è¡¨ä½¿ç”¨ä¸ç»“æ„ä½“æˆ–å¼‚å¸¸å®šä¹‰ä¸­çš„å­—æ®µåˆ—è¡¨å®Œå…¨ç›¸åŒçš„è¯­æ³•æ¥å®šä¹‰
      */
     public void ping() throws org.apache.thrift.TException;
 
@@ -27,8 +27,8 @@ public class Calculator {
     public int calculate(int logid, Work w) throws InvalidOperation, org.apache.thrift.TException;
 
     /**
-     * ´Ëmethod¾ßÓĞµ¥ÏòĞŞÊÎ·û. ÕâÒâÎ¶×Å¿Í»§¶ËÖ»Ìá³öÇëÇó£¬²¢ÇÒ¸ù±¾²»listenÈÎºÎÏìÓ¦
-     * µ¥Ïòmethod±ØĞëvoid
+     * æ­¤methodå…·æœ‰å•å‘ä¿®é¥°ç¬¦. è¿™æ„å‘³ç€å®¢æˆ·ç«¯åªæå‡ºè¯·æ±‚ï¼Œå¹¶ä¸”æ ¹æœ¬ä¸listenä»»ä½•å“åº”
+     * å•å‘methodå¿…é¡»void
      */
     public void zip() throws org.apache.thrift.TException;
 

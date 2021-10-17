@@ -9,7 +9,7 @@ public class StreamTest {
 		
 		String testText = "You don't really know how happy or sad something is going to make you in the future, even though you think you do right now. Put another way, psychologists know that most people are very bad at being able to predict how they will respond to positive or negative events in the future";
 		
-		//Ê¹ÓÃArrays.asList·µ»ØÊý×é
+		//ä½¿ç”¨Arrays.asListè¿”å›žæ•°ç»„
 		List<String> testList = Arrays.asList(testText.split(" "));
 		TreeMap<String, Integer> result1 = new TreeMap<String, Integer>();
 		TreeMap<Integer, String> result2 = new TreeMap<Integer, String>();
@@ -17,27 +17,27 @@ public class StreamTest {
 		
 		//for(String str:testList) System.out.println(str);
 		
-		//×¢ÒâÕâÀïÒªÓÃforEach ±éÀú£¬¶ø²»ÊÇmap£¬mapÊÇÓ³Éä£¬ÒªÓÐ·µ»ØÖµ
-		//²¢ÇÒmapËÆºõÊÇ¶èÐÔÇóÖµ£¬µ¥¶ÀÓÃ²»»áÖ±½ÓÉúÐ§£¬result×îºóÊÇ¿ÕµÄ
-		// getOrDefault ÔÚÃ»ÓÐµÄÇé¿öÏÂ·µ»ØÄ¬ÈÏÖµ
+		//æ³¨æ„è¿™é‡Œè¦ç”¨forEach éåŽ†ï¼Œè€Œä¸æ˜¯mapï¼Œmapæ˜¯æ˜ å°„ï¼Œè¦æœ‰è¿”å›žå€¼
+		//å¹¶ä¸”mapä¼¼ä¹Žæ˜¯æƒ°æ€§æ±‚å€¼ï¼Œå•ç‹¬ç”¨ä¸ä¼šç›´æŽ¥ç”Ÿæ•ˆï¼Œresultæœ€åŽæ˜¯ç©ºçš„
+		// getOrDefault åœ¨æ²¡æœ‰çš„æƒ…å†µä¸‹è¿”å›žé»˜è®¤å€¼
 		testList.stream()
 				.forEach(str -> result1.put(str, result1.getOrDefault(str, 0) + 1));
 		
 		result1.keySet().stream()
 						.forEach(key -> result2.put(result1.get(key), result2.getOrDefault(result1.get(key), "") + key + " " ));
 		
-		//´Ë´¦¿ÉÒÔ²»ÓÃmap£¬½öÎªÊµÑé
+		//æ­¤å¤„å¯ä»¥ä¸ç”¨mapï¼Œä»…ä¸ºå®žéªŒ
 		result2.keySet().stream()
-											//ÈýÄ¿ÔËËãÇø·Ö¸´Êý
+											//ä¸‰ç›®è¿ç®—åŒºåˆ†å¤æ•°
 						.map(key -> key + (key>1?" times:":" time:") + result2.get(key))
 						.forEach(key -> System.out.println(key));
 		
 		//flatMap
 		testList.stream()
-		//flapMapÖ®Ç°ÏÈÓÃmapÓ³Éä£¬map¿ÉÒÔ·µ»ØÀàÐÍ²»Ò»Ñù£¬Êµ¼ÊÉÏ´Ë²½¿ÉÒÔºÍÏÂÃæºÏ³ÉÒ»²½
-		//·ÅÈëº¯ÊýArrays::stream²ÉÓÃÕâÑùµÄÐ´·¨£¬ÊÇÒ»¸ö¾²Ì¬º¯Êý
+		//flapMapä¹‹å‰å…ˆç”¨mapæ˜ å°„ï¼Œmapå¯ä»¥è¿”å›žç±»åž‹ä¸ä¸€æ ·ï¼Œå®žé™…ä¸Šæ­¤æ­¥å¯ä»¥å’Œä¸‹é¢åˆæˆä¸€æ­¥
+		//æ”¾å…¥å‡½æ•°Arrays::streamé‡‡ç”¨è¿™æ ·çš„å†™æ³•ï¼Œæ˜¯ä¸€ä¸ªé™æ€å‡½æ•°
 				.map(word -> word.split(""))
-				//Arrays::stream Ïàµ±ÓÚµ÷ÓÃstream ¼´ arr -> arr.stream()
+				//Arrays::stream ç›¸å½“äºŽè°ƒç”¨stream å³ arr -> arr.stream()
 				.flatMap(Arrays::stream)
 				.filter(character -> character.matches("[a-zA-Z]"))
 				.forEach(character -> result3.put(character, result3.getOrDefault(character, 0) + 1));

@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class outterClass {
-	//ÈÎÒâ³¤¶ÈµÄÕûÊıºÍÊ®½øÖÆÊı
+	//ä»»æ„é•¿åº¦çš„æ•´æ•°å’Œåè¿›åˆ¶æ•°
 	private BigInteger BInt = new BigInteger("999999999999999999");
 	private BigDecimal BDec = new BigDecimal("9.9999999999999999");
 	
@@ -18,7 +18,7 @@ public class outterClass {
 	}
 	
 	{
-		//¸Ã²¿·ÖÃ¿´Înew ÄÚ²¿Àà¶¼±»µ÷ÓÃ
+		//è¯¥éƒ¨åˆ†æ¯æ¬¡new å†…éƒ¨ç±»éƒ½è¢«è°ƒç”¨
 		System.out.println("non static initate InnerClass1");
 	}
 	
@@ -66,7 +66,7 @@ public class outterClass {
 		@Override
 		public void info() {
 			// TODO Auto-generated method stub
-			//µ÷ÓÃÍâ²¿Àà£¬ÎŞÖØÃû¿ÉÈ¥µô
+			//è°ƒç”¨å¤–éƒ¨ç±»ï¼Œæ— é‡åå¯å»æ‰
 			outterClass.this.testPrivateFunc();
 		}
 	}
@@ -79,8 +79,8 @@ public class outterClass {
 		rst.add(InnerClass3.class);
 		return rst;
 	}
-	/*ÒòÎªÄÚ²¿ÀàÊÇ¶¯Ì¬µÄ£¨ÎŞstatic¹Ø¼ü×ÖĞŞÊÎ£©£¬¶ømain·½·¨ÊÇ¾²Ì¬µÄ£¬ÆÕÍ¨µÄÄÚ²¿Àà¶ÔÏóÒşº¬µØ±£´æÁËÒ»¸öÒıÓÃ£¬Ö¸Ïò´´½¨ËüµÄÍâÎ§Àà¶ÔÏó£¬
-	ËùÒÔÒªÔÚstatic·½·¨£¨Àà¼ÓÔØÊ±ÒÑ¾­³õÊ¼»¯£©µ÷ÓÃÄÚ²¿ÀàµÄ±ØĞëÏÈ´´½¨Íâ²¿Àà¡£¼´Ó¦¸ÃÕâÑù´´½¨
+	/*å› ä¸ºå†…éƒ¨ç±»æ˜¯åŠ¨æ€çš„ï¼ˆæ— staticå…³é”®å­—ä¿®é¥°ï¼‰ï¼Œè€Œmainæ–¹æ³•æ˜¯é™æ€çš„ï¼Œæ™®é€šçš„å†…éƒ¨ç±»å¯¹è±¡éšå«åœ°ä¿å­˜äº†ä¸€ä¸ªå¼•ç”¨ï¼ŒæŒ‡å‘åˆ›å»ºå®ƒçš„å¤–å›´ç±»å¯¹è±¡ï¼Œ
+	æ‰€ä»¥è¦åœ¨staticæ–¹æ³•ï¼ˆç±»åŠ è½½æ—¶å·²ç»åˆå§‹åŒ–ï¼‰è°ƒç”¨å†…éƒ¨ç±»çš„å¿…é¡»å…ˆåˆ›å»ºå¤–éƒ¨ç±»ã€‚å³åº”è¯¥è¿™æ ·åˆ›å»º
 	DanymicTest test = new StaticCallDynamic().new DanymicTest();*/
 	
 	@SuppressWarnings("unchecked")

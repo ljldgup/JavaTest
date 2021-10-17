@@ -20,7 +20,7 @@ public class Community extends Group{
 	public void printInfo() {
 		format();
 		
-		//每个community后面加一个tab
+		//姣忎釜community鍚庨潰鍔犱竴涓猼ab
 		blanks++;
 		System.out.println("Community " + name + ":");
 		for(Group group:groups) group.printInfo();

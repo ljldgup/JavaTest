@@ -5,6 +5,6 @@ public class Insert implements Command {
 	@Override
 	public void execute() {
 		// TODO Auto-generated method stub
-		System.out.println("Insert£¡£¡£¡");
+		System.out.println("Insertï¼ï¼ï¼");
 	}
 }

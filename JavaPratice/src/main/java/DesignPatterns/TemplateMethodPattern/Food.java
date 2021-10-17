@@ -5,7 +5,7 @@ public class Food {
 		System.out.println("heating");
 	}
 	
-	//hook ¹³×ÓÊµÑé
+	//hook é’©å­å®éªŒ
 	public void Preparation() {
 		System.out.println("Do nothing");
 	}

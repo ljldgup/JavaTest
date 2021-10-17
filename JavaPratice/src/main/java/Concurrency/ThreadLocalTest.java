@@ -28,14 +28,14 @@ public class ThreadLocalTest {
     }
 
 	/*
-	ThreadLocal Í¨¹ıThreadLocalMap ±£´æ£¬ ThreadLocalMap key Ê±ThreadLocalÊµÀı
-	ThreadLocalMap Ã¿¸öÏß³Ì¶¼ÓĞÒ»·İ£¬ThreadLocalÊµÀıÖ»ÓĞÒ»¸ö£¬Í¨¹ıÕâÁ½¸ö×éºÏÊµÏÖÃ¿¸öÏß³Ì¶¼ÓĞÒ»·İ¸±±¾
+	ThreadLocal é€šè¿‡ThreadLocalMap ä¿å­˜ï¼Œ ThreadLocalMap key æ—¶ThreadLocalå®ä¾‹
+	ThreadLocalMap æ¯ä¸ªçº¿ç¨‹éƒ½æœ‰ä¸€ä»½ï¼ŒThreadLocalå®ä¾‹åªæœ‰ä¸€ä¸ªï¼Œé€šè¿‡è¿™ä¸¤ä¸ªç»„åˆå®ç°æ¯ä¸ªçº¿ç¨‹éƒ½æœ‰ä¸€ä»½å‰¯æœ¬
 	 */
 
     public static void main(String[] args) {
         ThreadLocalTest test1 = new ThreadLocalTest();
 
-        //Ã¿¸ö±¾µØ±äÁ¿µÄÖµ¸÷²»ÏàÍ¬£¬¸÷×ÔÓĞÒ»·İ¿½±´¡£
+        //æ¯ä¸ªæœ¬åœ°å˜é‡çš„å€¼å„ä¸ç›¸åŒï¼Œå„è‡ªæœ‰ä¸€ä»½æ‹·è´ã€‚
         new Thread(() -> {
             test1.func1("Thread 1");
         }).start();

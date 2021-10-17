@@ -12,8 +12,8 @@ public class ReentrantReadWriteLockTest {
     Random random = new Random();
 
     public void test() {
-        //readLock¿ÉÒÔËøºÜ¶à´Î£¬ÊÇ¹²ÏíµÄ£¬¶øwriteLockÖ»ÄÜËøÒ»´Î
-        // readËø±»»ñµÃÊ±£¬ÎŞ·¨write±ÜÃâÔà¶Á£¬³ÌĞòËùÓĞµÄreadlock¶¼±»ÔËĞĞÍêÖ®ºó£¬writelock²ÅÄÜ»ñµÄËø
+        //readLockå¯ä»¥é”å¾ˆå¤šæ¬¡ï¼Œæ˜¯å…±äº«çš„ï¼Œè€ŒwriteLockåªèƒ½é”ä¸€æ¬¡
+        // readé”è¢«è·å¾—æ—¶ï¼Œæ— æ³•writeé¿å…è„è¯»ï¼Œç¨‹åºæ‰€æœ‰çš„readlockéƒ½è¢«è¿è¡Œå®Œä¹‹åï¼Œwritelockæ‰èƒ½è·çš„é”
         try {
             rwLock.readLock().lock();
             System.out.println("readLock: " + String.valueOf(Thread.currentThread().getId()) + ":" + t);

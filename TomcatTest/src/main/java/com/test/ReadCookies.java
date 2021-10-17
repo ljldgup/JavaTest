@@ -33,10 +33,10 @@ public class ReadCookies extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Cookie cookie = null;
 		Cookie[] cookies = null;
-		// »ñÈ¡Óë¸ÃÓòÏà¹ØµÄ Cookie µÄÊı×é
+		// è·å–ä¸è¯¥åŸŸç›¸å…³çš„ Cookie çš„æ•°ç»„
 		cookies = request.getCookies();
 
-		// ÉèÖÃÏìÓ¦ÄÚÈİÀàĞÍ
+		// è®¾ç½®å“åº”å†…å®¹ç±»å‹
 		response.setContentType("text/html;charset=UTF-8");
 
 		PrintWriter out = response.getWriter();
@@ -45,11 +45,11 @@ public class ReadCookies extends HttpServlet {
 		out.println(
 				docType + "<html>\n" + "<head><title>" + title + "</title></head>\n" + "<body bgcolor=\"#f0f0f0\">\n");
 		if (cookies != null) {
-			out.println("<h2>Cookie Ãû³ÆºÍÖµ</h2>");
+			out.println("<h2>Cookie åç§°å’Œå€¼</h2>");
 			for (int i = 0; i < cookies.length; i++) {
 				cookie = cookies[i];
-				out.print("Ãû³Æ£º" + cookie.getName() + "£¬");
-				out.print("Öµ£º" + URLDecoder.decode(cookie.getValue(), "utf-8") + " <br/>");
+				out.print("åç§°ï¼š" + cookie.getName() + "ï¼Œ");
+				out.print("å€¼ï¼š" + URLDecoder.decode(cookie.getValue(), "utf-8") + " <br/>");
 			}
 		} else {
 			out.println("<h2 class=\"tutheader\">No Cookie founds</h2>");

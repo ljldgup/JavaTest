@@ -5,24 +5,24 @@ import java.nio.channels.AsynchronousSocketChannel;
 import java.nio.channels.CompletionHandler;
  
 /**
- * ¿Í»§¶ËÁ¬½Ó³É¹¦»òÕßÊ§°ÜºóµÄ»Øµ÷´¦ÀíÀà
+ * å®¢æˆ·ç«¯è¿æ¥æˆåŠŸæˆ–è€…å¤±è´¥åçš„å›è°ƒå¤„ç†ç±»
  */
  
 public class AcceptCompletionHandler implements CompletionHandler <AsynchronousSocketChannel,AsyncTimeServerHandler>{
     @Override
     public void completed(AsynchronousSocketChannel result, AsyncTimeServerHandler attachment) {
-        //·şÎñ¶ËÒÑ¾­½ÓÊÕ¿Í»§¶Ë³É¹¦ÁË£¬ÎªÊ²Ã´»¹Òªµ÷ÓÃaccept·½·¨£¿ÒòÎªÒ»¸öchannel¿ÉÒÔ½ÓÊÕ³ÉÇ§ÉÏÍò¸ö¿Í»§¶Ë
-        //µ±µ÷ÓÃasynchronousServerSocketChannel.accept(this, new AcceptCompletionHandler())·½·¨ºó£¬ÓÖÓĞĞÂµÄ
-        //¿Í»§¶ËÁ¬½Ó½ÓÈë£¬ËùÒÔĞèÒª¼ÌĞøµ÷ÓÃËûµÄaccept·½·¨£¬½ÓÊÜÆäËü¿Í»§¶ËµÄ½ÓÈë£¬×îÖÕĞÎ³ÉÒ»¸öÑ­»·
+        //æœåŠ¡ç«¯å·²ç»æ¥æ”¶å®¢æˆ·ç«¯æˆåŠŸäº†ï¼Œä¸ºä»€ä¹ˆè¿˜è¦è°ƒç”¨acceptæ–¹æ³•ï¼Ÿå› ä¸ºä¸€ä¸ªchannelå¯ä»¥æ¥æ”¶æˆåƒä¸Šä¸‡ä¸ªå®¢æˆ·ç«¯
+        //å½“è°ƒç”¨asynchronousServerSocketChannel.accept(this, new AcceptCompletionHandler())æ–¹æ³•åï¼Œåˆæœ‰æ–°çš„
+        //å®¢æˆ·ç«¯è¿æ¥æ¥å…¥ï¼Œæ‰€ä»¥éœ€è¦ç»§ç»­è°ƒç”¨ä»–çš„acceptæ–¹æ³•ï¼Œæ¥å—å…¶å®ƒå®¢æˆ·ç«¯çš„æ¥å…¥ï¼Œæœ€ç»ˆå½¢æˆä¸€ä¸ªå¾ªç¯
         attachment.asynchronousServerSocketChannel.accept(attachment,this);
         
-//		³¢ÊÔÓÃdoAcceptËÀÑ­»·´úÌæÉÏÊö¹ı³Ì£¬ÕâÖÖĞ´·¨½«Å×³öjava.nio.channels.AcceptPendingExceptionÒì³£
-//		Ö»ÓĞÒ»¸öÁ¬½Ó½¨Á¢³É¹¦Ö®ºó£¬²ÅÄÜÔÙ½¨Á¢ÏÂÒ»¸öÁ¬½Ó£¬ËùÒÔÖ»ÄÜÕâÑùĞ´
+//		å°è¯•ç”¨doAcceptæ­»å¾ªç¯ä»£æ›¿ä¸Šè¿°è¿‡ç¨‹ï¼Œè¿™ç§å†™æ³•å°†æŠ›å‡ºjava.nio.channels.AcceptPendingExceptionå¼‚å¸¸
+//		åªæœ‰ä¸€ä¸ªè¿æ¥å»ºç«‹æˆåŠŸä¹‹åï¼Œæ‰èƒ½å†å»ºç«‹ä¸‹ä¸€ä¸ªè¿æ¥ï¼Œæ‰€ä»¥åªèƒ½è¿™æ ·å†™
         
         ByteBuffer buffer = ByteBuffer.allocate(1024);
-        //Òì²½¶Á²Ù×÷£¬²ÎÊıµÄ¶¨Òå£ºµÚÒ»¸ö²ÎÊı£º½ÓÊÕ»º³åÇø£¬ÓÃÓÚÒì²½´Óchannel¶ÁÈ¡Êı¾İ°ü£»
-        //µÚ¶ş¸ö²ÎÊı£ºÒì²½channelĞ¯´øµÄ¸½¼ş£¬Í¨Öª»Øµ÷µÄÊ±ºò×÷ÎªÈë²Î²ÎÊı£¬ÕâÀïÊÇ×÷ÎªReadCompletionHandlerµÄÈë²Î
-        //Í¨Öª»Øµ÷µÄÒµÎñhandler£¬Ò²¾ÍÊÇÊı¾İ´Óchannel¶Áµ½ByteBufferÍê³ÉºóµÄ»Øµ÷handler£¬ÕâÀïÊÇReadCompletionHandler
+        //å¼‚æ­¥è¯»æ“ä½œï¼Œå‚æ•°çš„å®šä¹‰ï¼šç¬¬ä¸€ä¸ªå‚æ•°ï¼šæ¥æ”¶ç¼“å†²åŒºï¼Œç”¨äºå¼‚æ­¥ä»channelè¯»å–æ•°æ®åŒ…ï¼›
+        //ç¬¬äºŒä¸ªå‚æ•°ï¼šå¼‚æ­¥channelæºå¸¦çš„é™„ä»¶ï¼Œé€šçŸ¥å›è°ƒçš„æ—¶å€™ä½œä¸ºå…¥å‚å‚æ•°ï¼Œè¿™é‡Œæ˜¯ä½œä¸ºReadCompletionHandlerçš„å…¥å‚
+        //é€šçŸ¥å›è°ƒçš„ä¸šåŠ¡handlerï¼Œä¹Ÿå°±æ˜¯æ•°æ®ä»channelè¯»åˆ°ByteBufferå®Œæˆåçš„å›è°ƒhandlerï¼Œè¿™é‡Œæ˜¯ReadCompletionHandler
         result.read(buffer, buffer, new ReadCompletionHandler(result));
     }
  

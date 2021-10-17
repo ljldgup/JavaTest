@@ -15,12 +15,12 @@ public class AsyncTimeServerHandler implements Runnable{
  
  
     public AsyncTimeServerHandler(int port){
-        //·şÎñ¶ËÆô¶¯¶Ë¿ÚºÅ
+        //æœåŠ¡ç«¯å¯åŠ¨ç«¯å£å·
         this.port = port;
         try {
-            //´´½¨Ò»¸öAsynchronousServerSocketChannel¶ÔÏó£¬¹¤³§·½·¨
+            //åˆ›å»ºä¸€ä¸ªAsynchronousServerSocketChannelå¯¹è±¡ï¼Œå·¥å‚æ–¹æ³•
             asynchronousServerSocketChannel = AsynchronousServerSocketChannel.open();
-            //°ó¶¨¶Ë¿ÚºÅ
+            //ç»‘å®šç«¯å£å·
             asynchronousServerSocketChannel.bind(new InetSocketAddress(port));
             System.out.println("the time server is start on port :" + port);
         } catch (IOException e) {
@@ -30,13 +30,13 @@ public class AsyncTimeServerHandler implements Runnable{
  
     @Override
     public void run() {
-        //ÊÇÒ»¸ö²¢·¢¹¤¾ßÀà£¬ËûÔÊĞíÒ»¸öÏß³ÌµÈ´ıÁíÒ»¸öÏß³ÌÍê³ÉºóÔÙÖ´ĞĞ
-        //ÕâÀïÊÇÎªÁË·ÀÖ¹Ö÷Ïß³ÌÆô¶¯Íê³Éºó¹Ø±Õ
+        //æ˜¯ä¸€ä¸ªå¹¶å‘å·¥å…·ç±»ï¼Œä»–å…è®¸ä¸€ä¸ªçº¿ç¨‹ç­‰å¾…å¦ä¸€ä¸ªçº¿ç¨‹å®Œæˆåå†æ‰§è¡Œ
+        //è¿™é‡Œæ˜¯ä¸ºäº†é˜²æ­¢ä¸»çº¿ç¨‹å¯åŠ¨å®Œæˆåå…³é—­
      latch = new CountDownLatch(1);
      doAccept();
         try {
-            //×èÈûÖ±µ½count down to 0
-        	//½ÓÊÕÊ§°ÜµÄÊ±ºò latch´¥·¢
+            //é˜»å¡ç›´åˆ°count down to 0
+        	//æ¥æ”¶å¤±è´¥çš„æ—¶å€™ latchè§¦å‘
             latch.await();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -45,7 +45,7 @@ public class AsyncTimeServerHandler implements Runnable{
  
  
     public void doAccept(){
-        //¸Ã·½·¨ÊÇÒì²½µÄ½ÓÊÜÀ´×Ô¸ÃÍ¨µÀµÄ¿Í»§¶ËµÄÁ¬½ÓÇëÇó£¬Á¬½Ó³É¹¦ºóµ÷ÓÃCompletionHandlerµÄcompleted»òÕßfailed·½·¨
+        //è¯¥æ–¹æ³•æ˜¯å¼‚æ­¥çš„æ¥å—æ¥è‡ªè¯¥é€šé“çš„å®¢æˆ·ç«¯çš„è¿æ¥è¯·æ±‚ï¼Œè¿æ¥æˆåŠŸåè°ƒç”¨CompletionHandlerçš„completedæˆ–è€…failedæ–¹æ³•
 
         asynchronousServerSocketChannel.accept(this, new AcceptCompletionHandler());
     }

@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 
-//导入xml配置
+//瀵煎叆xml閰嶇疆
 @ImportResource("classpath:aop.xml")
 @RestController
 public class Application {
 
-	//配合controller可以写在任何地方
+	//閰嶅悎controller鍙互鍐欏湪浠讳綍鍦版柟
 	@RequestMapping("/cheers")
 	String cheers(@RequestParam(name="name", required=false, defaultValue="World") String name) {
 		return String.format("cheeeeeers %s!", name);

@@ -2,10 +2,10 @@ package FunctionalProgram;
 
 public class TestAction {
     public static void main(String[] args) {
-    	//×¢ÒâÕâÀïÀí½âÎª´«ÈëµÄÊÇÒ»¸öº¯Êı
+    	//æ³¨æ„è¿™é‡Œç†è§£ä¸ºä¼ å…¥çš„æ˜¯ä¸€ä¸ªå‡½æ•°
         Action<String> action = System.out :: println;
         action.execute("Hello World!1");
-        //º¯ÊıÊ½½Ó¿Ú£¬Ö»ÓĞÒ»¸öº¯Êı£¬´«Èëºó¾ÍÖ´ĞĞ
+        //å‡½æ•°å¼æ¥å£ï¼Œåªæœ‰ä¸€ä¸ªå‡½æ•°ï¼Œä¼ å…¥åå°±æ‰§è¡Œ
         test(System.out :: println, "Hello World!2");
     }
 

@@ -14,29 +14,29 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/Refresh")
 
-//À©Õ¹ HttpServlet Àà
+//æ‰©å±• HttpServlet ç±»
 public class Refresh extends HttpServlet {
 
-    // ´¦Àí GET ·½·¨ÇëÇóµÄ·½·¨
+    // å¤„ç† GET æ–¹æ³•è¯·æ±‚çš„æ–¹æ³•
       public void doGet(HttpServletRequest request,
                         HttpServletResponse response)
                 throws ServletException, IOException
       {
-          // ÉèÖÃË¢ĞÂ×Ô¶¯¼ÓÔØÊ±¼äÎª 5 Ãë
+          // è®¾ç½®åˆ·æ–°è‡ªåŠ¨åŠ è½½æ—¶é—´ä¸º 5 ç§’
           response.setIntHeader("Refresh", 5);
-          // ÉèÖÃÏìÓ¦ÄÚÈİÀàĞÍ
+          // è®¾ç½®å“åº”å†…å®¹ç±»å‹
           response.setContentType("text/html;charset=UTF-8");
          
-          //Ê¹ÓÃÄ¬ÈÏÊ±ÇøºÍÓïÑÔ»·¾³»ñµÃÒ»¸öÈÕÀú  
+          //ä½¿ç”¨é»˜è®¤æ—¶åŒºå’Œè¯­è¨€ç¯å¢ƒè·å¾—ä¸€ä¸ªæ—¥å†  
           Calendar cale = Calendar.getInstance();  
-          //½«CalendarÀàĞÍ×ª»»³ÉDateÀàĞÍ  
+          //å°†Calendarç±»å‹è½¬æ¢æˆDateç±»å‹  
           Date tasktime=cale.getTime();  
-          //ÉèÖÃÈÕÆÚÊä³öµÄ¸ñÊ½  
+          //è®¾ç½®æ—¥æœŸè¾“å‡ºçš„æ ¼å¼  
           SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
-          //¸ñÊ½»¯Êä³ö  
+          //æ ¼å¼åŒ–è¾“å‡º  
           String nowTime = df.format(tasktime);
           PrintWriter out = response.getWriter();
-          String title = "×Ô¶¯Ë¢ĞÂ Header ÉèÖÃ ";
+          String title = "è‡ªåŠ¨åˆ·æ–° Header è®¾ç½® ";
           String docType =
           "<!DOCTYPE html>\n";
           out.println(docType +
@@ -44,9 +44,9 @@ public class Refresh extends HttpServlet {
             "<head><title>" + title + "</title></head>\n"+
             "<body bgcolor=\"#f0f0f0\">\n" +
             "<h1 align=\"center\">" + title + "</h1>\n" +
-            "<p>µ±Ç°Ê±¼äÊÇ£º" + nowTime + "</p>\n");
+            "<p>å½“å‰æ—¶é—´æ˜¯ï¼š" + nowTime + "</p>\n");
       }
-      // ´¦Àí POST ·½·¨ÇëÇóµÄ·½·¨
+      // å¤„ç† POST æ–¹æ³•è¯·æ±‚çš„æ–¹æ³•
       public void doPost(HttpServletRequest request,
                          HttpServletResponse response)
           throws ServletException, IOException {

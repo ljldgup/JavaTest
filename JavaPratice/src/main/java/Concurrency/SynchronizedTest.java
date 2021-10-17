@@ -4,13 +4,13 @@ public class SynchronizedTest {
 	public String name;
 	private  void func1() {
 		try {
-			//¶Ôµ±Ç°¶ÔÏóÓĞÓÃ
+			//å¯¹å½“å‰å¯¹è±¡æœ‰ç”¨
 			synchronized(name) {
 				
 				for(int i = 1; i < 3; i++) {
 					
 					Thread.sleep(500);
-					//´òÓ¡µ±Ç°id
+					//æ‰“å°å½“å‰id
 					System.out.println(name + " func1 " + Thread.currentThread().getId());
 				}
 			}
@@ -23,12 +23,12 @@ public class SynchronizedTest {
 	
 	private void func2() {
 		try {
-			//nameÊÇ¶¯Ì¬¶ÔÏó£¬Í¬Ñù ÊÇ¶Ôµ±Ç°¶ÔÏóÓĞÓÃ
+			//nameæ˜¯åŠ¨æ€å¯¹è±¡ï¼ŒåŒæ · æ˜¯å¯¹å½“å‰å¯¹è±¡æœ‰ç”¨
 			synchronized(name) {
 				for(int i = 1; i < 3; i++) {
 					
 					Thread.sleep(500);
-					//´òÓ¡µ±Ç°id
+					//æ‰“å°å½“å‰id
 					System.out.println(name + " func2 " + Thread.currentThread().getId());
 				}
 			}
@@ -40,12 +40,12 @@ public class SynchronizedTest {
 	
 	private void func3() {
 		try {
-			//¶ÔSynchronizedTestËùÓĞ¶ÔÏóÓĞÓÃ£¬Èç¹ûÀïÃæËøµÄÊÇstatic¶ÔÏó£¬Ò»ÑùÒ²ÊÇËùÓĞ¶ÔÏó
+			//å¯¹SynchronizedTestæ‰€æœ‰å¯¹è±¡æœ‰ç”¨ï¼Œå¦‚æœé‡Œé¢é”çš„æ˜¯staticå¯¹è±¡ï¼Œä¸€æ ·ä¹Ÿæ˜¯æ‰€æœ‰å¯¹è±¡
 			synchronized(SynchronizedTest.class) {
 				for(int i = 1; i < 3; i++) {
 					 Thread.yield();
 					Thread.sleep(500);				
-					//´òÓ¡µ±Ç°id
+					//æ‰“å°å½“å‰id
 					System.out.println(name + " func3 " + Thread.currentThread().getId());
 				}
 			}
@@ -67,23 +67,23 @@ public class SynchronizedTest {
 		SynchronizedTest test2 = new SynchronizedTest("test 2 ");
 		SynchronizedTest test3 = new SynchronizedTest("test 3 ");
 		
-		//¸ÃĞ´·¨²Î¼ûlambda£¬±Õ°ü£¬º¯Êı½Ó¿ÚFunctional interface ÉùÃ÷
+		//è¯¥å†™æ³•å‚è§lambdaï¼Œé—­åŒ…ï¼Œå‡½æ•°æ¥å£Functional interface å£°æ˜
 		
-		//ÀàµÄËøËø×¡ËùÓĞ¶ÔÏó
+		//ç±»çš„é”é”ä½æ‰€æœ‰å¯¹è±¡
 		new Thread(()->{test1.func3();}).start();
 		new Thread(()->{test2.func3();}).start();
 		new Thread(()->{test3.func3();}).start();
 		
-		//Ö»Ê£Ö÷Ïß³Ìºó´òÓ¡·Ö¸îÏß
+		//åªå‰©ä¸»çº¿ç¨‹åæ‰“å°åˆ†å‰²çº¿
 		while(Thread.activeCount() > 1) Thread.sleep(2000);
 		System.out.println("-----------------------------------------------");
 		
-		//Ëøname£¬µ¥¶ÀËø×¡¶ÔÏó,Ç°2¸öÎŞ·¨Í¬Ê±run
+		//é”nameï¼Œå•ç‹¬é”ä½å¯¹è±¡,å‰2ä¸ªæ— æ³•åŒæ—¶run
 		new Thread(()->{test3.func2();}).start();
 		new Thread(()->{test3.func1();}).start();
 		new Thread(()->{test2.func1();}).start();
 		
-		//¾²Ì¬¶ÔÏóµÄËø
+		//é™æ€å¯¹è±¡çš„é”
 	}
 	
 }

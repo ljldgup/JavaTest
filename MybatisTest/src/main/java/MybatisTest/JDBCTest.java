@@ -14,21 +14,21 @@ public class JDBCTest {
 		PreparedStatement prepareStatement = null;
 		ResultSet rs = null;
 		try {
-			// ¼ÓÔØÇı¶¯
+			// åŠ è½½é©±åŠ¨
 			Class.forName("com.mysql.jdbc.Driver");
-			// »ñÈ¡Á¬½Ó
+			// è·å–è¿æ¥
 			String url = "jdbc:mysql://127.0.0.1:3306/ssmdemo?serverTimezone=UTC";
 			String user = "springuser";
 			String password = "123456";
 			connection = DriverManager.getConnection(url, user, password);
-			// »ñÈ¡statement£¬ preparedStatement
+			// è·å–statementï¼Œ preparedStatement
 			String sql = "select * from tb_user";
 			prepareStatement = connection.prepareStatement(sql);
-			// ÉèÖÃ²ÎÊı
+			// è®¾ç½®å‚æ•°
 			// prepareStatement.setLong(1, 1l);
-			// Ö´ĞĞ²éÑ¯
+			// æ‰§è¡ŒæŸ¥è¯¢
 			rs = prepareStatement.executeQuery();
-			// ´¦Àí½á¹û¼¯
+			// å¤„ç†ç»“æœé›†
 			while (rs.next()) {
 				System.out.println(rs.getString("user_name"));
 				System.out.println(rs.getString("name"));
@@ -36,7 +36,7 @@ public class JDBCTest {
 				System.out.println(rs.getDate("birthday"));
 			}
 		} finally {
-			// ¹Ø±ÕÁ¬½Ó£¬ÊÍ·Å×ÊÔ´
+			// å…³é—­è¿æ¥ï¼Œé‡Šæ”¾èµ„æº
 			if (rs != null) {
 				rs.close();
 			}

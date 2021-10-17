@@ -6,7 +6,7 @@ import ThriftTest.service.server.HelloWorld;
 
 
 /**
- * ·şÎñ¶ËÊµÏÖ
+ * æœåŠ¡ç«¯å®ç°
  */
 public class HelloWorldServiceImpl implements HelloWorld.Iface {
  

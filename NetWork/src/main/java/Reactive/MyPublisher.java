@@ -22,7 +22,7 @@ public class MyPublisher implements Publisher<String> {
         while(true){
             socket = server.accept ();
             BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            //¶ÁÈ¡¿Í»§¶Ë·¢ËÍÀ´µÄÏûÏ¢
+            //è¯»å–å®¢æˆ·ç«¯å‘é€æ¥çš„æ¶ˆæ¯
             br.lines().map(s -> s.split( " "))
                     .flatMap(Arrays::stream)
                     .forEach(str->{

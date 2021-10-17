@@ -9,16 +9,16 @@ import java.nio.channels.SocketChannel;
 public class NIOClient
 {
     /**
-     * 通道
+     * 閫氶亾
      */
     SocketChannel channel;
  
     public void initClient(String host, int port) throws IOException
     {
-        //构造socket连接
+        //鏋勯�爏ocket杩炴帴
         InetSocketAddress servAddr = new InetSocketAddress(host, port);
  
-        //打开连接
+        //鎵撳紑杩炴帴
         this.channel = SocketChannel.open(servAddr);
     }
  

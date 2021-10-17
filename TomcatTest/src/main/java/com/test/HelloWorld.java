@@ -1,11 +1,11 @@
 package com.test;
 
-//µ¼Èë±ØĞèµÄ java ¿â
+//å¯¼å…¥å¿…éœ€çš„ java åº“
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-//À©Õ¹ HttpServlet Àà
+//æ‰©å±• HttpServlet ç±»
 @SuppressWarnings("serial")
 public class HelloWorld extends HttpServlet {
 
@@ -14,7 +14,7 @@ public class HelloWorld extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 	    message = "Hello World , Nect To Meet You: " + System.currentTimeMillis();
-	    System.out.println("servlet³õÊ¼»¯¡­¡­");
+	    System.out.println("servletåˆå§‹åŒ–â€¦â€¦");
 	    super.init();
 	}
 
@@ -34,7 +34,7 @@ public class HelloWorld extends HttpServlet {
 
 	@Override
 	public void destroy() {
-	    System.out.println("servletÏú»Ù£¡");
+	    System.out.println("servleté”€æ¯ï¼");
 	    super.destroy();
 	}
 }

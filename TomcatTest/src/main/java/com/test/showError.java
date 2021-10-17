@@ -5,18 +5,18 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import java.util.*;
 
-// À©Õ¹ HttpServlet Àà
+// æ‰©å±• HttpServlet ç±»
 public class showError extends HttpServlet {
  
-  // ´¦Àí GET ·½·¨ÇëÇóµÄ·½·¨
+  // å¤„ç† GET æ–¹æ³•è¯·æ±‚çš„æ–¹æ³•
   public void doGet(HttpServletRequest request,
                     HttpServletResponse response)
             throws ServletException, IOException
   {
-      // ÉèÖÃ´íÎó´úÂëºÍÔ­Òò
+      // è®¾ç½®é”™è¯¯ä»£ç å’ŒåŸå› 
       response.sendError(407, "Need althehanfucktiordnla!!!" );
   }
-  // ´¦Àí POST ·½·¨ÇëÇóµÄ·½·¨
+  // å¤„ç† POST æ–¹æ³•è¯·æ±‚çš„æ–¹æ³•
   public void doPost(HttpServletRequest request,
                      HttpServletResponse response)
       throws ServletException, IOException {

@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.ArrayList;
 import java.util.HashMap;
 public class Template {
-	// ÓÃ·ºĞÍÀ´ÊµÏÖÀàËÆÖØÔØµÄĞ§¹û£¬Ğ§ÂÊÓ¦¸ÃµÍÒ»Ğ©
+	// ç”¨æ³›å‹æ¥å®ç°ç±»ä¼¼é‡è½½çš„æ•ˆæœï¼Œæ•ˆç‡åº”è¯¥ä½ä¸€äº›
 	public static <k,v> Map<k,v> map(){
 		return new HashMap<k,v>();
 	}

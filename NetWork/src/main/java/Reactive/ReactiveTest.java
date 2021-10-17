@@ -17,7 +17,7 @@ public class ReactiveTest {
                 ;
         flow.subscribe(System.out::println);
 
-/*observeOn·µ»ØµÄÊÇÁíÒ»¸ö able ÎÞ·¨ÏÔÊ¾
+/*observeOnè¿”å›žçš„æ˜¯å¦ä¸€ä¸ª able æ— æ³•æ˜¾ç¤º
         Flowable.fromCallable(() -> {
             Thread.sleep(1000); //  imitate expensive computation
             return "Done";
@@ -41,7 +41,7 @@ public class ReactiveTest {
 
         AtomicInteger count = new AtomicInteger();
 
-        //ignored ....ÀàËÆpython jsÖÐµÄ_
+        //ignored ....ç±»ä¼¼python jsä¸­çš„_
         Observable.range(1, 10)
                 .doOnNext(ignored -> count.incrementAndGet())
                 .ignoreElements()

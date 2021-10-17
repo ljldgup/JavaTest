@@ -31,8 +31,8 @@ public class ReentrantLockTest {
 			}
 		}, 500, 1000, TimeUnit.MILLISECONDS);
 
-//		  //Ê¹ÓÃScheduledThreadPoolExecutor ´úÌætimer 
-		//500ÊÇ³õÊ¼ÑÓ³Ù£¬1000Ã¿´ÎÑÓ³Ù
+//		  //ä½¿ç”¨ScheduledThreadPoolExecutor ä»£æ›¿timer 
+		//500æ˜¯åˆå§‹å»¶è¿Ÿï¼Œ1000æ¯æ¬¡å»¶è¿Ÿ
 //		  Timer timer = new Timer(); timer.schedule(new TimerTask() 
 //		  { int i = 0; public
 //		 void run() { if(i > 15) System.exit(0); 
@@ -45,14 +45,14 @@ public class ReentrantLockTest {
 	public void timedAcquire() {
 		try {
 			while (true) {
-				// 1£©lock(), ÄÃ²»µ½lock¾Í²»°ÕĞİ£¬²»È»Ïß³Ì¾ÍÒ»Ö±block¡£ ±È½ÏÎŞÀµµÄ×ö·¨¡£
-				// 2£©tryLock()£¬ÂíÉÏ·µ»Ø£¬ÄÃµ½lock¾Í·µ»Øtrue£¬²»È»·µ»Øfalse¡£ ±È½ÏäìÈ÷µÄ×ö·¨¡£
-				// ´øÊ±¼äÏŞÖÆµÄtryLock()£¬ÄÃ²»µ½lock£¬¾ÍµÈÒ»¶ÎÊ±¼ä£¬³¬Ê±·µ»Øfalse¡£±È½Ï´ÏÃ÷µÄ×ö·¨¡£
-				// Ç°ÕßÊÇ±¯¹ÛËø£¬ºóÕßÊÇÀÖ¹ÛËø
+				// 1ï¼‰lock(), æ‹¿ä¸åˆ°lockå°±ä¸ç½¢ä¼‘ï¼Œä¸ç„¶çº¿ç¨‹å°±ä¸€ç›´blockã€‚ æ¯”è¾ƒæ— èµ–çš„åšæ³•ã€‚
+				// 2ï¼‰tryLock()ï¼Œé©¬ä¸Šè¿”å›ï¼Œæ‹¿åˆ°lockå°±è¿”å›trueï¼Œä¸ç„¶è¿”å›falseã€‚ æ¯”è¾ƒæ½‡æ´’çš„åšæ³•ã€‚
+				// å¸¦æ—¶é—´é™åˆ¶çš„tryLock()ï¼Œæ‹¿ä¸åˆ°lockï¼Œå°±ç­‰ä¸€æ®µæ—¶é—´ï¼Œè¶…æ—¶è¿”å›falseã€‚æ¯”è¾ƒèªæ˜çš„åšæ³•ã€‚
+				// å‰è€…æ˜¯æ‚²è§‚é”ï¼Œåè€…æ˜¯ä¹è§‚é”
 				boolean rst = rLock.tryLock(5, TimeUnit.SECONDS);
 				System.out.println("timedAcquire:" + rst);
 
-				// ³É¹¦½áÊø£¬·ñÔò¼ÌĞø
+				// æˆåŠŸç»“æŸï¼Œå¦åˆ™ç»§ç»­
 				if (rst)
 					break;
 			}
@@ -81,14 +81,14 @@ public class ReentrantLockTest {
 	}
 
 	private void reentrant() {
-		// ReentrantLockÖØÈëËøÊµÑé
+		// ReentrantLocké‡å…¥é”å®éªŒ
 		try {
 			while (rLock.getHoldCount() < 20) {
 				rLock.lock();
 				usedNums++;
 				System.out.println("reentrantLock used " + rLock.getHoldCount() + " times");
 			}
-			// ³É¹¦½áÊø£¬·ñÔò¼ÌĞø
+			// æˆåŠŸç»“æŸï¼Œå¦åˆ™ç»§ç»­
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -98,7 +98,7 @@ public class ReentrantLockTest {
 	}
 
 	private void synReentrant() {
-		// synchronizedÖØÈëËøÊµÑé,
+		// synchronizedé‡å…¥é”å®éªŒ,
 		while (usedNums < 20) {
 			synchronized (this) {
 				usedNums++;
@@ -109,7 +109,7 @@ public class ReentrantLockTest {
 	}
 
 	private void unReentrant() {
-		// ReentrantLockÖØÈëËøÊµÑé
+		// ReentrantLocké‡å…¥é”å®éªŒ
 		try {
 			int i = 0;
 			while (i++ < 10) {
@@ -119,7 +119,7 @@ public class ReentrantLockTest {
 				}
 			}
 
-			// ³É¹¦½áÊø£¬·ñÔò¼ÌĞø
+			// æˆåŠŸç»“æŸï¼Œå¦åˆ™ç»§ç»­
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -130,17 +130,17 @@ public class ReentrantLockTest {
 
 	public static void main(String[] args) {
 		ReentrantLockTest rLockTest = new ReentrantLockTest();
-		// try³¬Ê±ÊµÑé
+		// tryè¶…æ—¶å®éªŒ
 		// new Thread(() -> rLockTest.untimedAcquire()).start();
 		// new Thread(() -> rLockTest.timedAcquire()).start();
 
-		// ÖØÈëËøÔÊĞíÏß³Ì²»Ö¹Ò»´ÎµØËø¶¨×ÊÔ´
-		// ReentrantLockÖØÈëËøÊµÑé
+		// é‡å…¥é”å…è®¸çº¿ç¨‹ä¸æ­¢ä¸€æ¬¡åœ°é”å®šèµ„æº
+		// ReentrantLocké‡å…¥é”å®éªŒ
 		// new Thread(() -> rLockTest.reentrant()).start();
-		// synchronizedÖØÈëËøÊµÑé
+		// synchronizedé‡å…¥é”å®éªŒ
 		// new Thread(() -> rLockTest.synReentrant()).start();
 
-		// ²»¿ÉÖØÈëËø£¬Êµ¼ÊÉÏÊÇÊÖ¶¯¼ÓÒ»¸öÅĞ¶Ïsynchronized·½·¨Ò»Ñù
+		// ä¸å¯é‡å…¥é”ï¼Œå®é™…ä¸Šæ˜¯æ‰‹åŠ¨åŠ ä¸€ä¸ªåˆ¤æ–­synchronizedæ–¹æ³•ä¸€æ ·
 		new Thread(() -> rLockTest.unReentrant()).start();
 	}
 }

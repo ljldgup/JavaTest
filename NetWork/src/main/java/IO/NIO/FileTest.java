@@ -14,11 +14,11 @@ public class  FileTest{
 
 		FileTest test = new FileTest("H:\\BaiduNetDisk\\WinKawaks\\skin.bmp");
 
-		//streamÊÇ°´ÕÕ×Ö½ÚÈ¥´¦ÀíµÄ£¬¿´ÆğÀ´¾ÍÏñÊÇË®Á÷Ò»Ñù£¬Ò»¸ö½ÓÒ»¸ö¡£¶øchannelÊÇ°´ÕÕÊı¾İ¿éÀ´´¦ÀíµÄ¡£
-		//channel¿ÉÒÔÔÚÒì²½·Ç×èÈû±ä³ÉÖĞÊ¹ÓÃ£¬ÔÚ¶ÁÈ¡Êı¾İµÄ¹ı³ÌÖĞ»á²úÉúÏàÓ¦µÄÊ±ÊÂ¼ş£¬¶østreamÖ»ÄÜÔÚ×èÈû±à³ÌÖĞÊ¹ÓÃ¡£
-		//streamÊÇ°´ÕÕ×Ö½ÚÈ¥´¦ÀíµÄ£¬¿´ÆğÀ´¾ÍÏñÊÇË®Á÷Ò»Ñù£¬Ò»¸ö½ÓÒ»¸ö¡£¶øchannelÊÇ°´ÕÕÊı¾İ¿éÀ´´¦ÀíµÄ,½«Êı¾İĞ´ÈëµÄbuffer¡£
-		test.byStream();//InputStream/OutputStream²Ù×÷byte[]
-		test.byChannel(); //Channel²Ù×÷buffer
+		//streamæ˜¯æŒ‰ç…§å­—èŠ‚å»å¤„ç†çš„ï¼Œçœ‹èµ·æ¥å°±åƒæ˜¯æ°´æµä¸€æ ·ï¼Œä¸€ä¸ªæ¥ä¸€ä¸ªã€‚è€Œchannelæ˜¯æŒ‰ç…§æ•°æ®å—æ¥å¤„ç†çš„ã€‚
+		//channelå¯ä»¥åœ¨å¼‚æ­¥éé˜»å¡å˜æˆä¸­ä½¿ç”¨ï¼Œåœ¨è¯»å–æ•°æ®çš„è¿‡ç¨‹ä¸­ä¼šäº§ç”Ÿç›¸åº”çš„æ—¶äº‹ä»¶ï¼Œè€Œstreamåªèƒ½åœ¨é˜»å¡ç¼–ç¨‹ä¸­ä½¿ç”¨ã€‚
+		//streamæ˜¯æŒ‰ç…§å­—èŠ‚å»å¤„ç†çš„ï¼Œçœ‹èµ·æ¥å°±åƒæ˜¯æ°´æµä¸€æ ·ï¼Œä¸€ä¸ªæ¥ä¸€ä¸ªã€‚è€Œchannelæ˜¯æŒ‰ç…§æ•°æ®å—æ¥å¤„ç†çš„,å°†æ•°æ®å†™å…¥çš„bufferã€‚
+		test.byStream();//InputStream/OutputStreamæ“ä½œbyte[]
+		test.byChannel(); //Channelæ“ä½œbuffer
 	}
 	
 	public FileTest(String directory ) {

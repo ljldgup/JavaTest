@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 public class AsyncClient {
 
         private  static  class myAsyncMethodCallback implements AsyncMethodCallback<SharedStruct> {
-            // ´¦Àí·şÎñ·µ»ØµÄ½á¹ûÖµO
+            // å¤„ç†æœåŠ¡è¿”å›çš„ç»“æœå€¼O
             public void onComplete(SharedStruct sharedStruct) {
                 long t;
                 t = Math.abs(new Random().nextInt() % 8 ) + 2;
@@ -39,18 +39,18 @@ public class AsyncClient {
         }
 
         public static void main(String[] args) throws IOException, TException, InterruptedException {
-        // Òì²½µ÷ÓÃ¹ÜÀíÆ÷
+        // å¼‚æ­¥è°ƒç”¨ç®¡ç†å™¨
         TAsyncClientManager clientManager = new TAsyncClientManager();
-        // ¿Í»§¶ËÓ¦¸ÃÊ¹ÓÃ·Ç×èÈû IO
+        // å®¢æˆ·ç«¯åº”è¯¥ä½¿ç”¨éé˜»å¡ IO
         TNonblockingTransport transport = new TNonblockingSocket("localhost",8181);
-        // Ğ­ÒéÓë·şÎñ¶ËĞèÒªÒ»ÖÂ
+        // åè®®ä¸æœåŠ¡ç«¯éœ€è¦ä¸€è‡´
 
         TProtocolFactory tProtocolFactory = new TBinaryProtocol.Factory();
-        // Òì²½µ÷ÓÃ
+        // å¼‚æ­¥è°ƒç”¨
         SharedService.AsyncClient asyncClient = new SharedService.AsyncClient(tProtocolFactory,
                 clientManager, transport);
         asyncClient.getStruct(123, new myAsyncMethodCallback());
-        //Í¬Ò»¸öclientÎŞ·¨Ö´ĞĞ¶à¸öÇëÇó,ĞÂ½¨µÄÃ²ËÆÒ²²»ĞĞ¡£¡£
+        //åŒä¸€ä¸ªclientæ— æ³•æ‰§è¡Œå¤šä¸ªè¯·æ±‚,æ–°å»ºçš„è²Œä¼¼ä¹Ÿä¸è¡Œã€‚ã€‚
         //asyncClient.getStruct(456, new myAsyncMethodCallback());
         System.out.println("Client call finished");
         TimeUnit.SECONDS.sleep(10);

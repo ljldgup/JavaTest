@@ -5,10 +5,10 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import java.util.*;
 
-//À©Õ¹ HttpServlet Àà
+//æ‰©å±• HttpServlet ç±»
 public class ErrorHandler extends HttpServlet {
 
-    // ´¦Àí GET ·½·¨ÇëÇóµÄ·½·¨
+    // å¤„ç† GET æ–¹æ³•è¯·æ±‚çš„æ–¹æ³•
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         Throwable throwable = (Throwable)
@@ -25,41 +25,41 @@ public class ErrorHandler extends HttpServlet {
         if (requestUri == null){
             requestUri = "Unknown";
         }
-        // ÉèÖÃÏìÓ¦ÄÚÈİÀàĞÍ
+        // è®¾ç½®å“åº”å†…å®¹ç±»å‹
         response.setContentType("text/html;charset=UTF-8");
     
         PrintWriter out = response.getWriter();
-        String title = "²ËÄñ½Ì³Ì Error/Exception ĞÅÏ¢";
+        String title = "èœé¸Ÿæ•™ç¨‹ Error/Exception ä¿¡æ¯";
        
         String docType = "<!DOCTYPE html>\n";
         out.println(docType +
             "<html>\n" +
              "<head><title>" + title + "</title></head>\n" +
              "<body bgcolor=\"#f0f0f0\">\n");
-           out.println("<h1>²ËÄñ½Ì³ÌÒì³£ĞÅÏ¢ÊµÀıÑİÊ¾</h1>");
+           out.println("<h1>èœé¸Ÿæ•™ç¨‹å¼‚å¸¸ä¿¡æ¯å®ä¾‹æ¼”ç¤º</h1>");
            if (throwable == null && statusCode == null){
-              out.println("<h2>´íÎóĞÅÏ¢¶ªÊ§</h2>");
-              out.println("Çë·µ»Ø <a href=\"" + 
+              out.println("<h2>é”™è¯¯ä¿¡æ¯ä¸¢å¤±</h2>");
+              out.println("è¯·è¿”å› <a href=\"" + 
             response.encodeURL("http://localhost:8080/") + 
-                "\">Ö÷Ò³</a>¡£");
+                "\">ä¸»é¡µ</a>ã€‚");
            }else if (statusCode != null) {
-              out.println("´íÎó´úÂë : " + statusCode);
+              out.println("é”™è¯¯ä»£ç  : " + statusCode);
         }else{
-               out.println("<h2>´íÎóĞÅÏ¢</h2>");
+               out.println("<h2>é”™è¯¯ä¿¡æ¯</h2>");
               out.println("Servlet Name : " + servletName + 
                               "</br></br>");
-              out.println("Òì³£ÀàĞÍ : " + 
+              out.println("å¼‚å¸¸ç±»å‹ : " + 
                               throwable.getClass( ).getName( ) + 
                               "</br></br>");
-              out.println("ÇëÇó URI: " + requestUri + 
+              out.println("è¯·æ±‚ URI: " + requestUri + 
                               "<br><br>");
-              out.println("Òì³£ĞÅÏ¢: " + 
+              out.println("å¼‚å¸¸ä¿¡æ¯: " + 
                                   throwable.getMessage( ));
            }
            out.println("</body>");
            out.println("</html>");
     }
-    // ´¦Àí POST ·½·¨ÇëÇóµÄ·½·¨
+    // å¤„ç† POST æ–¹æ³•è¯·æ±‚çš„æ–¹æ³•
     public void doPost(HttpServletRequest request,
                       HttpServletResponse response)
        throws ServletException, IOException {

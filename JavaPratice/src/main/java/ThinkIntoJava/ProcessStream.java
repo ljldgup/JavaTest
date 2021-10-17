@@ -7,15 +7,15 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 public class ProcessStream {
- 	//Reader Writer ¶ÔÓ¦×Ö·û£¬ stream¶ÔÓ¦×Ö½Ú
+ 	//Reader Writer å¯¹åº”å­—ç¬¦ï¼Œ streamå¯¹åº”å­—èŠ‚
 	public static void enter(Process ps) {
 		BufferedWriter in = new BufferedWriter(new OutputStreamWriter(ps.getOutputStream()));
-		//netstatÃüÁî±¾Éí »áµ¼ÖÂ×èÈû
+		//netstatå‘½ä»¤æœ¬èº« ä¼šå¯¼è‡´é˜»å¡
 		String commands = "dir\n ps\n ipconfig\n 124\n netstat\n";
 		for(String command : commands.split(" ")) {
 			try {
 				in.write(command);
-				//BufferedWriter, »º³åÇøĞ´ÈëĞèÒªflush
+				//BufferedWriter, ç¼“å†²åŒºå†™å…¥éœ€è¦flush
 				in.flush();
 				Thread.sleep(1000);
 			} catch (Exception e) {
@@ -32,13 +32,13 @@ public class ProcessStream {
 		String rst;
 		BufferedReader out = new BufferedReader(new InputStreamReader(ps.getInputStream()));
 		
-		//¸ÃÖÖĞ´·¨Òì³£Ê±»áÌø³öÑ­»·
+		//è¯¥ç§å†™æ³•å¼‚å¸¸æ—¶ä¼šè·³å‡ºå¾ªç¯
 		try {
 			while(true) {
-				//ÓÉÓÚcmd×îºóÒ»ĞĞÃ»ÓĞ½áÎ²£¬µ¥¸ö½ø³ÌÖĞÖ±½ÓÊ¹ÓÃreadLine£¬ÎŞ·¨¶Áµ½£¬»á×èÈû£¬ËùÒÔ²ÉÓÃÁ½¸ö½ø³Ì¶ÁĞ´ 
+				//ç”±äºcmdæœ€åä¸€è¡Œæ²¡æœ‰ç»“å°¾ï¼Œå•ä¸ªè¿›ç¨‹ä¸­ç›´æ¥ä½¿ç”¨readLineï¼Œæ— æ³•è¯»åˆ°ï¼Œä¼šé˜»å¡ï¼Œæ‰€ä»¥é‡‡ç”¨ä¸¤ä¸ªè¿›ç¨‹è¯»å†™ 
 				rst = out.readLine();
 				System.out.println(rst);
-				//Ã¿´òÓ¡Ò»´Î½«ÔËĞĞÈ¨Àû½»¸øÊäÈëÏß³Ì
+				//æ¯æ‰“å°ä¸€æ¬¡å°†è¿è¡Œæƒåˆ©äº¤ç»™è¾“å…¥çº¿ç¨‹
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -47,7 +47,7 @@ public class ProcessStream {
 		} 
 	}
 	public static void main(String[] args) throws IOException {
-		//Ê¹ÓÃProcessBuilderµÄstart·½·¨
+		//ä½¿ç”¨ProcessBuilderçš„startæ–¹æ³•
 		Process process = new ProcessBuilder("cmd.exe").start();
 		new Thread(() -> enter(process)).start();
 		new Thread(() -> out(process)).start();

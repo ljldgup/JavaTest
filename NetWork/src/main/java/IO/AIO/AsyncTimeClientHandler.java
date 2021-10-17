@@ -21,12 +21,12 @@ public class AsyncTimeClientHandler implements CompletionHandler<Void,AsyncTimeC
     private class AsyncTimeClientWriteHandler implements CompletionHandler<Integer, ByteBuffer>{
         @Override
         public void completed(Integer result, ByteBuffer byteBuffer) {
-            //Èç¹û»º´æÊı¾İÖĞ»¹ÓĞÊı¾İ£¬½Ó×ÅĞ´
+            //å¦‚æœç¼“å­˜æ•°æ®ä¸­è¿˜æœ‰æ•°æ®ï¼Œæ¥ç€å†™
              if(byteBuffer.hasRemaining()){
                  client.write(byteBuffer, byteBuffer, this);
              }else{
                  ByteBuffer readBuffer = ByteBuffer.allocate(1024);
-                 //¶ÁÈ¡·şÎñ¶ËµÄ·µ»Øµ½»º´æ£¬²ÉÓÃÄäÃûÄÚ²¿Àà×öĞ´Íê»º´æºóµÄ»Øµ÷handler
+                 //è¯»å–æœåŠ¡ç«¯çš„è¿”å›åˆ°ç¼“å­˜ï¼Œé‡‡ç”¨åŒ¿åå†…éƒ¨ç±»åšå†™å®Œç¼“å­˜åçš„å›è°ƒhandler
                  client.read(readBuffer, readBuffer, new AsyncTimeClientReadHandler() );
              }
 
@@ -37,8 +37,8 @@ public class AsyncTimeClientHandler implements CompletionHandler<Void,AsyncTimeC
 
 
         /**
-         * »º´æĞ´ÈëchannelÊ§°Ü
-         * ¹Ø±Õclient£¬ÊÍ·ÅchannelÏà¹ØÁªµÄÒ»ÇĞ×ÊÔ´
+         * ç¼“å­˜å†™å…¥channelå¤±è´¥
+         * å…³é—­clientï¼Œé‡Šæ”¾channelç›¸å…³è”çš„ä¸€åˆ‡èµ„æº
          * @param exc
          * @param attachment
          */
@@ -57,7 +57,7 @@ public class AsyncTimeClientHandler implements CompletionHandler<Void,AsyncTimeC
     
     private class AsyncTimeClientReadHandler implements CompletionHandler<Integer, ByteBuffer>{
         /**
-         * ´Ó»º´æÖĞ¶ÁÈ¡Êı¾İ£¬×öÒµÎñ´¦Àí
+         * ä»ç¼“å­˜ä¸­è¯»å–æ•°æ®ï¼Œåšä¸šåŠ¡å¤„ç†
          * @param result
          * @param buffer
          */
@@ -78,8 +78,8 @@ public class AsyncTimeClientHandler implements CompletionHandler<Void,AsyncTimeC
 
 
         /**
-         * ´Ó»º´æ¶ÁÈ¡Êı¾İÊ§°Ü
-         * ¹Ø±Õclient£¬ÊÍ·ÅchannelÏà¹ØÁªµÄÒ»ÇĞ×ÊÔ´
+         * ä»ç¼“å­˜è¯»å–æ•°æ®å¤±è´¥
+         * å…³é—­clientï¼Œé‡Šæ”¾channelç›¸å…³è”çš„ä¸€åˆ‡èµ„æº
          * @param exc
          * @param attachment
          */
@@ -98,7 +98,7 @@ public class AsyncTimeClientHandler implements CompletionHandler<Void,AsyncTimeC
         this.host = host;
         this.port = port;
         try {
-            //³õÊ¼»¯Ò»¸öAsynchronousSocketChannel
+            //åˆå§‹åŒ–ä¸€ä¸ªAsynchronousSocketChannel
             client = AsynchronousSocketChannel.open();
         } catch (IOException e) {
             e.printStackTrace();
@@ -108,7 +108,7 @@ public class AsyncTimeClientHandler implements CompletionHandler<Void,AsyncTimeC
     @Override
     public void run() {
      latch = new CountDownLatch(1);
-     //Á¬½Ó·şÎñ¶Ë£¬²¢½«×ÔÉí×÷ÎªÁ¬½Ó³É¹¦Ê±µÄ»Øµ÷handler
+     //è¿æ¥æœåŠ¡ç«¯ï¼Œå¹¶å°†è‡ªèº«ä½œä¸ºè¿æ¥æˆåŠŸæ—¶çš„å›è°ƒhandler
      client.connect(new InetSocketAddress(host, port), this, this);
         try {
             latch.await();
@@ -119,25 +119,25 @@ public class AsyncTimeClientHandler implements CompletionHandler<Void,AsyncTimeC
  
 
     /**
-     * Á¬½Ó·şÎñ¶Ë³É¹¦Ê±µÄ»Øµ÷
+     * è¿æ¥æœåŠ¡ç«¯æˆåŠŸæ—¶çš„å›è°ƒ
      * @param result
      * @param attachment
      */
     @Override
     public void completed(Void   result, AsyncTimeClientHandler attachment) {
-        //ÇëÇó²ÎÊı
+        //è¯·æ±‚å‚æ•°
       byte [] req = "query time order".getBytes();
-      //·ÖÅäĞ´»º´æÇø
+      //åˆ†é…å†™ç¼“å­˜åŒº
       ByteBuffer write = ByteBuffer.allocate(req.length);
-      //ÍùĞ´»º´æÇøĞ´ÇëÇóbody
+      //å¾€å†™ç¼“å­˜åŒºå†™è¯·æ±‚body
       write.put(req);
       write.flip();
-      //½«»º´æÖĞµÄÊı¾İĞ´µ½channel£¬Í¬Ê±Ê¹ÓÃÄäÃûÄÚ²¿Àà×öÍê³Éºó»Øµ÷
+      //å°†ç¼“å­˜ä¸­çš„æ•°æ®å†™åˆ°channelï¼ŒåŒæ—¶ä½¿ç”¨åŒ¿åå†…éƒ¨ç±»åšå®Œæˆåå›è°ƒ
      client.write(write, write, new AsyncTimeClientWriteHandler() );
     }
  
     /**
-     * Á¬½Ó·şÎñ¶ËÊ§°Ü
+     * è¿æ¥æœåŠ¡ç«¯å¤±è´¥
      * @param exc
      * @param attachment
      */
