@@ -52,16 +52,22 @@ dependencies {
     //监控工具，可增加/actuator/health 等endpoints
     //具体https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-endpoints
     compile('org.springframework.boot:spring-boot-starter-actuator')
-    
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server')
 
     compile("org.springframework.boot:spring-boot-devtools")
     // JPA Data (We are going to use Repositories, Entities, Hibernate, etc...)
-    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
-    
-    // Use MySQL Connector-J
+    //compile 'org.springframework.boot:spring-boot-starter-data-jpa'
     compile 'mysql:mysql-connector-java'
+
+    compile('com.baomidou:mybatis-plus-boot-starter:3.2.0')
+    compile('com.baomidou:mybatis-plus-generator:3.2.0')
+    compile('com.baomidou:mybatis-plus:3.2.0')
+
+    compile 'org.projectlombok:lombok:1.18.16'
+    compileOnly 'org.projectlombok:lombok:1.18.16'
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+
     testCompile("org.springframework.boot:spring-boot-starter-test")
 
 }
