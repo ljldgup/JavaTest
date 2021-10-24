@@ -13,6 +13,9 @@ spring:
         name: eureka-client
     main:
       allow-bean-definition-overriding: true
+    http:
+      encoding:
+        charset: UTF-8
 
 eureka:
     client:
@@ -26,3 +29,6 @@ test:
     name2: laal
     times: ${random.int(10)}
     blockTime: 100
+
+
+
