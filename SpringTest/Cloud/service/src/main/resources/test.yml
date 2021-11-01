@@ -1,0 +1,6 @@
+test:
+        name1: jialian
+        operation: kcuf
+        name2: laal
+        times: ${random.int(10)}
+        blockTime: 100
