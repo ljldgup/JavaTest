@@ -1,6 +1,7 @@
-﻿package LJL;
+package ljl;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 //@Service用于标注业务层组件，
 //@Controller用于标注控制层组件（如struts中的action）,
@@ -13,15 +14,15 @@ public class DemoService {
     private String normal; // 注入普通字符串
     
     @Value("\"#{systemProperties['os.name']}\"")
-    private String testValueAnno1;
+    private String testValue1;
     
     // 这里的值来自resources/application.properties，spring boot启动时默认加载此文件
     @Value("${app.name}")
-    private String testValueAnno2;
+    private String testValue2;
     
     public void test(){
         System.out.println(normal);
-        System.out.println(testValueAnno1);
-        System.out.println(testValueAnno2);
+        System.out.println(testValue1);
+        System.out.println(testValue2);
     }
 }
