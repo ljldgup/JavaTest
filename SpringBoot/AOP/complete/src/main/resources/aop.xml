@@ -11,7 +11,7 @@
         <!-- 开启aop注解方式，此步骤s不能少，这样java类中的aop注解才会生效 -->
         <aop:aspectj-autoproxy proxy-target-class="true"/>
     
-        <bean id="logHandler" class="hello.LogHandler" />
+        <bean id="logHandler" class="hello.XmlAop" />
         
         <aop:config>
             <aop:aspect id="log" ref="logHandler" order="2">
