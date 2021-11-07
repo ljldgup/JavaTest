@@ -8,14 +8,18 @@
 		<version>2.5.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>ljl.spring</groupId>
 	<artifactId>aop</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>rest-service-complete</name>
-	<description>Demo project for Spring Boot</description>
+	<name>spring-boot-aop-test</name>
+	<description>test project for Spring Boot aop related</description>
 	<properties>
 		<java.version>1.8</java.version>
+		<mp.version>3.3.2</mp.version>
+		<junit.version>4.13</junit.version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -32,10 +36,23 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-boot-starter</artifactId>
+			<version>${mp.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-generator</artifactId>
+			<version>${mp.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>${junit.version}</version>
 		</dependency>
 	</dependencies>
 

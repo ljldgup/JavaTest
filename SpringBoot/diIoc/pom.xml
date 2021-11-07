@@ -10,14 +10,14 @@
 	</parent>
 
 	<groupId>ljl.spring</groupId>
-	<artifactId>aop</artifactId>
+	<artifactId>Spring Boot di ioc</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>rest-service-complete</name>
-	<description>test project for Spring Boot aop related</description>
+	<description>test project for Spring Boot di ioc related</description>
 	<properties>
 		<java.version>1.8</java.version>
 		<mp.version>3.3.2</mp.version>
-		<junit.version>4.12</junit.version>
+		<junit.version>4.13</junit.version>
 	</properties>
 
 	<dependencies>
