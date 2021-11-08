@@ -1,4 +1,4 @@
-package hello;
+package aop;
 
 //xml配置实现,不需要实例化
 public class XmlAop

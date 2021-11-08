@@ -1,4 +1,4 @@
-package other;
+package aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class AnnotationAop {
 
 	//对注解的代理
-	@Pointcut("@annotation(other.AopTest)")
+	@Pointcut("@annotation(aop.AopTest)")
 	public void aopTest(){}
 
 	@Around("aopTest()")

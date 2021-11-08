@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assembly xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3 http://maven.apache.org/xsd/assembly-1.1.3.xsd
+http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3 ">
+    <id>package</id>
+    <formats>
+        <!--压缩文件的类型-->
+        <format>zip</format>
+    </formats>
+    <includeBaseDirectory>true</includeBaseDirectory>
+    <fileSets>
+
+        <!--  把lib下面的外部库打入包中-->
+<!--        如果mevan中通过本地引入，dependencySets 设置scope也能达到效果-->
+        <fileSet>
+            <directory>src/main/resource/lib</directory>
+            <outputDirectory>lib</outputDirectory>
+            <includes>
+                <include>**.jar</include>
+                <include>**.dll</include>
+            </includes>
+        </fileSet>
+
+        <!--  resource 下的配置放在最外侧目录中，去掉lib-->
+        <fileSet>
+            <directory>src/main/resources</directory>
+
+            <outputDirectory>./conf</outputDirectory>
+            <includes>
+                <include>**.xml</include>
+                <include>**.yml</include>
+                <include>**.properties</include>
+            </includes>
+        </fileSet>
+        <!--    这部分用来生成运行的jar包,也放在lib包下面-->
+        <fileSet>
+            <directory>${project.build.directory}</directory>
+            <outputDirectory>./lib</outputDirectory>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+
+
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>lib</outputDirectory>
+<!--            如果通过system引入的本地包，可能需要改成all,或者在上面打包的时候手动指定-->
+            <scope>runtime</scope>
+            <excludes>
+                <exclude>${groupId}:${artifactId}</exclude>
+            </excludes>
+        </dependencySet>
+    </dependencySets>
+</assembly>

@@ -1,4 +1,4 @@
-package other;
+package aop;
 
 public @interface AopTest {
 }

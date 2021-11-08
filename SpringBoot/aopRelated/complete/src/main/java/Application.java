@@ -1,5 +1,4 @@
-package hello;
-
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,9 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 //导入xml配置
 @ImportResource("classpath:aop.xml")
-//springboot 默认扫Application类,other 和hello平级不能被扫，所以要用ComponentScan加上
-@ComponentScan("other, hello")
 @RestController
+//没有包的情况只能这样扫
+@ComponentScan("aop,entity,service,bean")
+@MapperScan("mapper")
 public class Application {
 
 	//配合controller可以写在任何地方
