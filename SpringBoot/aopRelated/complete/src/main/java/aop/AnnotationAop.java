@@ -1,11 +1,13 @@
 package aop;
 
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
+@Slf4j
 @Component
 @Aspect
 public class AnnotationAop {
@@ -17,8 +19,8 @@ public class AnnotationAop {
 	@Around("aopTest()")
 	public void printTime(ProceedingJoinPoint pjp) throws Throwable
 	{
-		System.out.println("aopTest运行前:" + System.currentTimeMillis());
+		log.info("aopTest运行前:" + System.currentTimeMillis());
 		pjp.proceed();
-		System.out.println("aopTest运行后:" + System.currentTimeMillis());
+		log.info("aopTest运行后:" + System.currentTimeMillis());
 	}
 }
