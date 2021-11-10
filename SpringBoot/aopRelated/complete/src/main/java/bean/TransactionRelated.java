@@ -4,6 +4,7 @@ import entity.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import service.AccountService;
 
@@ -18,5 +19,17 @@ public class TransactionRelated {
 	@GetMapping("list")
 	public  List<Account> getAccountList(){
 		return accountService.list();
+	}
+
+	@GetMapping("transaction")
+	public String transaction(@RequestParam(value = "num", defaultValue = "11") int num){
+		try {
+			accountService.transactionTest1(num);
+			return "成功";
+		}catch (Exception e){
+			e.printStackTrace();
+			return e.getMessage();
+		}
+
 	}
 }

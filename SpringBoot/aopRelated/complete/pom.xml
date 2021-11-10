@@ -20,6 +20,7 @@
         <junit.version>4.13</junit.version>
         <lombok.version>1.18.16</lombok.version>
         <mysql.version>8.0.22</mysql.version>
+        <logback.version>1.2.4</logback.version>
     </properties>
 
     <dependencies>
@@ -67,6 +68,12 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
         </dependency>
 
     </dependencies>
