@@ -31,7 +31,7 @@ public class Application implements ApplicationRunner{
     private FactoriesTest factoriesTest;
 
 	@Autowired
-	Config config;
+	ConfigTest configTest;
 
 	@Autowired
 	ApplicationContext applicationContext;
@@ -62,8 +62,8 @@ public class Application implements ApplicationRunner{
 				System.out.println("conditionTest not autowired, test.value " + env.getProperty("test.value"));
 			}
 
-			config.print();
-            Thread.sleep(1000);  
+			configTest.print();
+            Thread.sleep(10000);
         }  
     }
       
