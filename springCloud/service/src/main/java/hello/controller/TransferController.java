@@ -1,10 +1,8 @@
 package hello.controller;
 
 import hello.entity.User;
-import hello.mapper.UserMapper;
 import hello.params.Transfer;
-import hello.service.UserService;
-import org.apache.tomcat.jni.Time;
+import hello.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class TransferController {
 
 	@Autowired
-	private UserService userService;
+	private AccountService userService;
 
 	@PostMapping(path = "transfer")
 	public String transfer(@RequestBody Transfer transfer){
