@@ -23,13 +23,19 @@ public class Publisher {
 
 	@Scheduled(cron="0/5 * * * * ?")
 	public String send() {
-		jms.convertAndSend(queue, "queue" + LocalTime.now());
+		//jms.convertAndSend(queue, "queue" + LocalTime.now());
 		jms.convertAndSend(topic, "topic" + LocalTime.now());
 		return "queue 发送成功";
 	}
 
+	//destination为topic需要把spring.jms.pub-sub-domain=true 注释放开。
 	@JmsListener(destination = "out.queue")
-	public void consumerMsg(String msg) {
+	public void consumerQueue(String msg) {
+		System.out.println(msg);
+	}
+
+	@JmsListener(destination = "publish.topic")
+	public void consumerTopic(String msg) {
 		System.out.println(msg);
 	}
 }
