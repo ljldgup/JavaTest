@@ -10,6 +10,7 @@ import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.config.JmsListenerContainerFactory;
 
 import javax.jms.*;
+import java.util.Random;
 
 /**
  * @author: elvin
@@ -60,5 +61,10 @@ public class ActiveMQConfig {
 		bean.setPubSubDomain(true);
 		bean.setConnectionFactory(connectionFactory);
 		return bean;
+	}
+
+	@Bean
+	public Random genRandom(){
+		return new Random();
 	}
 }
