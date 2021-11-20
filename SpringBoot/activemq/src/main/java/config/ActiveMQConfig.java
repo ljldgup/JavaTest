@@ -9,8 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.config.JmsListenerContainerFactory;
 
-import javax.jms.Queue;
-import javax.jms.Topic;
+import javax.jms.*;
 
 /**
  * @author: elvin
@@ -43,9 +42,10 @@ public class ActiveMQConfig {
 	}
 
 	@Bean
-	public ActiveMQConnectionFactory connectionFactory() {
+	public ConnectionFactory connectionFactory() {
 		return new ActiveMQConnectionFactory(usrName, password, brokerUrl);
 	}
+	
 
 	@Bean
 	public JmsListenerContainerFactory<?> jmsListenerContainerQueue(ActiveMQConnectionFactory connectionFactory){
