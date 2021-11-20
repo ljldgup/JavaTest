@@ -23,8 +23,8 @@ public class Publisher {
 
 	@Scheduled(cron="0/5 * * * * ?")
 	public String send() {
-		//jms.convertAndSend(queue, "queue" + LocalTime.now());
-		jms.convertAndSend(topic, "topic" + LocalTime.now());
+		jms.convertAndSend(queue, "queue" + LocalTime.now());
+		//jms.convertAndSend(topic, "topic" + LocalTime.now());
 		return "queue 发送成功";
 	}
 
