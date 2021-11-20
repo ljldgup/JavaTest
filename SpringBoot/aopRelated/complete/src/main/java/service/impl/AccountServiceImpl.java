@@ -21,12 +21,12 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
 	ApplicationContext applicationContext;
 
 	@Override
-//	默认propagation_requierd：如果当前没有事务，就新建一个事务，如果已存在一个事务中，加入到这个事务中
+//	传播范围默认Propagation.REQUIRED：如果当前没有事务，就新建一个事务，如果已存在一个事务中，加入到这个事务中
 	@Transactional(rollbackFor = Exception.class)
 	public void transactionTest1(int num) throws Exception {
 		Account account = list().get(0);
 		account.setAmount(new BigDecimal(num));
-		updateById(account);
+		int result = this.getBaseMapper().updateById(account);
 		AccountService accountService = (AccountService)applicationContext.getBean(this.getClass());
 		try {
 			accountService.transactionTest2(num);
@@ -37,10 +37,10 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
 	}
 
 	@Override
-	//嵌套事务，1抛异常时1,2都回退，2抛异常，但用try包住则只回退2, 1提交
+	//Propagation.REQUIRES_NEW嵌套事务，1抛异常时1,2都回退，2抛异常，但用try包住则只回退2, 1提交
 //	@Transactional(rollbackFor = Exception.class,propagation = Propagation.NESTED)
 
-	//新独立事务，1抛异常时，不回退， 2抛异常，1未
+	//Propagation.REQUIRES_NEW新独立事务，1抛异常时，不回退， 2抛异常，1未
 	@Transactional(rollbackFor = Exception.class,propagation = Propagation.REQUIRES_NEW)
 	public void transactionTest2(int num) throws Exception {
 		Account account = list().get(1);
