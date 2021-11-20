@@ -6,13 +6,14 @@ import mapper.AccountMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import service.AccountService;
 
 import java.math.BigDecimal;
 
-@Repository
+@Service
 public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> implements AccountService {
 
 	//注入自己用于生成一个新事务
@@ -26,7 +27,7 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
 		Account account = list().get(0);
 		account.setAmount(new BigDecimal(num));
 		updateById(account);
-		AccountServiceImpl accountService = (AccountServiceImpl)applicationContext.getBean(this.getClass());
+		AccountService accountService = (AccountService)applicationContext.getBean(this.getClass());
 		try {
 			accountService.transactionTest2(num);
 		}catch (Exception e){
