@@ -7,6 +7,7 @@ import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.core.JmsMessagingTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.jms.JMSConsumer;
@@ -16,7 +17,7 @@ import javax.jms.Topic;
 import java.time.LocalTime;
 import java.util.Random;
 
-@Component
+@Service
 public class Publisher {
 	@Autowired
 	private JmsMessagingTemplate jms;
@@ -33,28 +34,18 @@ public class Publisher {
 	@Autowired
 	private ApplicationContext applicationContext;
 
-
-	@Scheduled(cron = "0/5 * * * * ?")
-	public void job() {
-		try {
-			//注意这里直接调用send是不会有@Transaction效果的，因为本身没被代理
-			Publisher publisherProxy = applicationContext.getBean(this.getClass());
-			publisherProxy.send();
-		}catch (Exception e){
-			e.printStackTrace();
-		}
-	}
-
-	//两个注解都没有使事务生效
-//	@Transactional(rollbackFor = Exception.class)
+	//两个注解都没有使事务生效,貌似Transactional没有被代理
+	//生成JmsTransactionManager事务管理器后生效，单一数据库，springboot可以自动识别，但是mq貌似不行
+	@Transactional(transactionManager = "JmsTransactionManager", rollbackFor = Exception.class)
 //	@JmsListener(destination = "fake")
-	public  void send() throws Exception {
+	public void send() throws Exception {
 		LocalTime localTime = LocalTime.now();
 		jms.convertAndSend(queue, "queue " + localTime);
 		jms.convertAndSend(topic, "topic " + localTime);
 		if(random.nextInt() % 2 == 1) {
 			throw new Exception(localTime + " send failed");
 		}
+		Publisher publisher = applicationContext.getBean(this.getClass());
 	}
 
 

@@ -22,8 +22,6 @@ public class ActivemqTest {
 	@Autowired
 	private Topic topic;
 
-
-
 	@Test
 	public void topicTest1() throws JMSException, InterruptedException {
 		//topic消费到是消息是实时的，过时不候
