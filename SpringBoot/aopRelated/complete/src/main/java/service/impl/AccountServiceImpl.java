@@ -13,12 +13,16 @@ import service.AccountService;
 
 import java.math.BigDecimal;
 
-@Service
+@Service("debugAccountService")
 public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> implements AccountService {
 
 	//注入自己用于生成一个新事务
 	@Autowired
 	ApplicationContext applicationContext;
+
+	//打断点用
+	public AccountServiceImpl() {
+	}
 
 	@Override
 //	传播范围默认Propagation.REQUIRED：如果当前没有事务，就新建一个事务，如果已存在一个事务中，加入到这个事务中

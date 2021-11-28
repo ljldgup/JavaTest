@@ -2,7 +2,10 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 //没有包的情况只能这样扫
 @ComponentScan("aop,entity,service,bean")
 @MapperScan("mapper")
+@EnableAsync
+@EnableScheduling
 public class Application {
 
 	//配合controller可以写在任何地方
@@ -23,7 +28,6 @@ public class Application {
 	}
 	
     public static void main(String[] args) {
-    	
         SpringApplication.run(Application.class, args);
     }
 
