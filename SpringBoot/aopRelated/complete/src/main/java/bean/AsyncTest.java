@@ -33,7 +33,7 @@ public class AsyncTest {
 		return new AsyncResult<>(atomicInteger.getAndAdd(1));
 	}
 
-	@Scheduled(cron = "*/1 * * * * *")
+//	@Scheduled(cron = "*/1 * * * * *")
 	public void test() throws InterruptedException, ExecutionException {
 		//抛出异常后仍然能够继续执行,线程池会自动创建新线程
 		if (asyncTest2().get() % 2 == 0) throw new RuntimeException();

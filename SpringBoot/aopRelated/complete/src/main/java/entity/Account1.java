@@ -1,13 +1,13 @@
 package entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-
 import java.math.BigDecimal;
 
-
 @Data
-public class Account {
+@TableName("account")
+public class Account1 {
 
 	@TableId("ID")
     private Long id;

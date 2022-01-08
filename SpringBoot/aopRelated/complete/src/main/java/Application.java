@@ -3,7 +3,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -18,8 +17,8 @@ import java.util.concurrent.*;
 @ImportResource("classpath:aop.xml")
 @RestController
 //没有包的情况只能这样扫
-@ComponentScan("aop,entity,service,bean")
-@MapperScan("mapper")
+@ComponentScan("aop,entity,service,bean,config")
+@MapperScan("mapper1")
 @EnableAsync
 @EnableScheduling
 public class Application {

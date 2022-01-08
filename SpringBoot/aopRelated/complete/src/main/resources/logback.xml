@@ -38,7 +38,7 @@
     <logger name="java.sql.ResultSet" level="DEBUG" />
 
     <!--    打印sql这句一定要-->
-    <logger name="mapper" level="DEBUG"/>
+    <logger name="mapper1" level="DEBUG"/>
 
     <root level="INFO">
         <appender-ref ref="CONSOLE" />
