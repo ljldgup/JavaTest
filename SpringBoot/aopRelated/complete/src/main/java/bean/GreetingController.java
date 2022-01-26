@@ -1,5 +1,6 @@
 package bean;
 
+import entity.Account1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,7 +22,10 @@ public class GreetingController {
 
     @GetMapping("/hello")
     public String hello(@RequestParam(name="name", required=false, defaultValue="defaultValue") String name) {
-        beanTest.print();
+        Account1 account1 = new Account1();
+        account1.setId(1L);
+        account1.setName(name);
+        beanTest.print(account1, 999);
         return String.format("annotation aop test name=%s!", name);
     }
 
