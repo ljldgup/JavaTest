@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--文档类型定义（DTD）可定义合法的XML文档构建模块。
+由于公司需要用代理，直接下载http://mybatis.org/dtd/mybatis-3-config.dtd放到本地 -->
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "mybatis-3-config.dtd">
+
+<!-- 根标签 -->
+
+<configuration>
+
+	<properties>
+		<property name="driver" value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://127.0.0.1:3306/ssmdemo?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;allowMultiQueries=true" />
+		<property name="username" value="springuser" />
+		<property name="password" value="123456" />
+	</properties>
+	
+	
+	<settings>
+	     <!-- 开启驼峰匹配，驼峰与划线匹配 userName 可以与 user_name-->
+	    <setting name="mapUnderscoreToCamelCase" value="true"/>
+	    <!-- 开启日志-->
+	    <setting name="logImpl" value="SLF4J"/>
+	</settings>
+	
+	<!-- 环境，可以配置多个，default：指定采用哪个环境 -->
+	<environments default="development">
+		<!-- id：唯一标识 -->
+		<environment id="QA">
+			<!-- 事务管理器，JDBC类型的事务管理器 -->
+			<transactionManager type="JDBC" />
+			<!-- 数据源，池类型的数据源 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url"
+					value="jdbc:mysql://127.0.0.1:3306/ssmdemo" />
+				<property name="username" value="springuser" />
+				<property name="password" value="123456" />
+			</dataSource>
+		</environment>
+
+		<environment id="development">
+			<!-- 事务管理器，JDBC类型的事务管理器 -->
+			<transactionManager type="JDBC" />
+			<!-- 数据源，池类型的数据源 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<!-- 配置了properties，所以可以直接引用 -->
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+		<mapper resource="mappers/MyMapper.xml" />
+		<mapper resource="mappers/UserDaoMapper.xml"/>
+	</mappers>
+</configuration>
