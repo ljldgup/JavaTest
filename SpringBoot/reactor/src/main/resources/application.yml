@@ -1,0 +1,15 @@
+server:
+  port: 8888
+
+spring:
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/jetlinks
+    username: postgres
+    password: jetlinks
