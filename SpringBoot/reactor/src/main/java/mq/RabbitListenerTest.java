@@ -5,6 +5,7 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import tools.TimeUtils;
 
 import java.util.UUID;
 
@@ -13,8 +14,8 @@ public class RabbitListenerTest {
 
     @RabbitListener(queues = "demo")
     public void receiveMessage(String message) {
-        System.out.println("Received Message:" + message);
-        System.out.println();
+        TimeUtils.printTime("rabbit receive ");
+        System.out.println("Rabbit Received Message:" + message);
     }
 
     private final AmqpTemplate amqpTemplate;
@@ -24,8 +25,9 @@ public class RabbitListenerTest {
         this.amqpTemplate = amqpTemplate;
     }
 
-    @Scheduled(cron = "0/5 * * * * * ")
+//    @Scheduled(cron = "0/5 * * * * * ")
     public void sendMessage() {
+        TimeUtils.printTime("rabbit send ");
         amqpTemplate.convertAndSend("", "demo", UUID.randomUUID());
     }
 }

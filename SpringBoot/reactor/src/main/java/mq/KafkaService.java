@@ -16,6 +16,7 @@ import reactor.kafka.receiver.ReceiverOptions;
 import reactor.kafka.sender.KafkaSender;
 import reactor.kafka.sender.SenderOptions;
 import reactor.kafka.sender.SenderRecord;
+import tools.TimeUtils;
 
 import javax.annotation.PostConstruct;
 import java.util.Collections;
@@ -54,7 +55,8 @@ public class KafkaService {
                 .addRevokeListener(partitions -> System.out.println("onPartitionsRevoked " + partitions));
         KafkaReceiver<String, String> kafkaReceiver = KafkaReceiver.create(consumerOptions);
         kafkaReceiver.receive().doOnNext(r -> {
-            System.out.println("receive " + r.value());
+            TimeUtils.printTime("kafka receive ");
+            System.out.println("kafka receive " + r.value());
             r.receiverOffset().acknowledge();
         }).subscribe();
     }
@@ -62,7 +64,7 @@ public class KafkaService {
 
     public Mono<?> send() {
         SenderRecord<String, String, Object> senderRecord = SenderRecord.create(new ProducerRecord<>("demo", value()), 1);
-        return kafkaSender.send(Mono.just(senderRecord)).next();
+        return kafkaSender.send(Mono.just(senderRecord)).doOnNext(x -> TimeUtils.printTime("kafka send ")).next();
     }
 
     private String value() {

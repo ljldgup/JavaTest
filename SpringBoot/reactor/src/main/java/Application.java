@@ -26,12 +26,4 @@ public class Application {
 
     }
 
-    @Autowired
-    KafkaService kafkaService;
-
-//    @Scheduled(cron = "0/30 * * * * * ")
-    public void pubMessageKafka() {
-        Mono.just(context.getBean(GreetingClient.class)).subscribe(greetingClient ->
-                System.out.println(">> message = " + greetingClient.getMessage().block()));
-    }
 }
