@@ -3,6 +3,8 @@ package FunctionalProgram;
 import java.util.Arrays;
 import java.util.List;
 import java.util.TreeMap;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class StreamTest {
 	public static void main(String[] args) {
@@ -45,6 +47,14 @@ public class StreamTest {
 		result3.keySet().stream()
 						.map(key -> key + " " + result3.get(key))
 						.forEach(x -> System.out.println(x));
+
+
+// 生成无限的随机数流
+		Stream<Double> infiniteRandomNumbers = Stream.generate(Math::random);
+
+// 仅打印前10个随机数
+		infiniteRandomNumbers.limit(10).forEach(System.out::println);
 	}
-	
+
+
 } 
