@@ -1,6 +1,5 @@
 package ljl.runner;
 
-import ljl.activemq.TestData;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 

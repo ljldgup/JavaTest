@@ -15,7 +15,7 @@ import javax.annotation.PostConstruct;
 @SpringBootApplication
 @EnableAsync
 @EnableScheduling
-//@ComponentScan(excludeFilters = {@ComponentScan.Filter(type = FilterType.REGEX, pattern = "ljl.quartz.*")})
+@ComponentScan(excludeFilters = {@ComponentScan.Filter(type = FilterType.REGEX, pattern = "ljl.quartz.*")})
 public class Application {
 
     public static void main(String[] args) {
