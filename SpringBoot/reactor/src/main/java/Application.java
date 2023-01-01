@@ -1,5 +1,4 @@
 import hello.GreetingClient;
-import mq.KafkaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,7 +11,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import reactor.core.publisher.Mono;
 
-@ComponentScan(value = "config,hello,websocket,mq")
+@ComponentScan(value = "config,hello")
 @EnableScheduling
 @EnableAsync
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
