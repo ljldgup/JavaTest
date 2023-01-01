@@ -19,7 +19,7 @@
         <mp.version>3.3.2</mp.version>
         <junit.version>4.13</junit.version>
         <lombok.version>1.18.16</lombok.version>
-        <mysql.version>8.0.22</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <logback.version>1.2.4</logback.version>
     </properties>
 
